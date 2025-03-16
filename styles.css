@@ -3,5 +3,25 @@ body {
   font-family: "Calibri", sans-serif;
 }
 h1 {
-  color: blue;
+  color: white;
+}
+
+.navbar{
+  background-color: blue;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.navdiv{
+  display: felx;
+  align-items: centre;
+  justify-content: space-between;
+}
+.logo a{
+  font-size: 35px;
+  font-weight: 600;
+  color: white;
+}
+li a{
+  list-style: none;
+  display: inline-block;
 }
