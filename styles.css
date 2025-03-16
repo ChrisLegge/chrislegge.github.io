@@ -1,6 +1,7 @@
 body {
   background-color: powderblue;
   font-family: "Calibri", sans-serif;
+  text-decorations: none;
 }
 h1 {
   color: white;
@@ -21,7 +22,14 @@ h1 {
   font-weight: 600;
   color: white;
 }
-li a{
+li{
   list-style: none;
   display: inline-block;
+}
+
+li a{
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 25px;
 }
