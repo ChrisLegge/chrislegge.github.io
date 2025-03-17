@@ -66,3 +66,7 @@ nav li:first-child{
 .sidebar li a{
   width: 100%;
 }
+
+.sidebar a:hover{
+  background-color: #f0f0f0;
+}
