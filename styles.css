@@ -66,3 +66,11 @@ nav li:first-child{
 .sidebar li a{
   width: 100%;
 }
+
+.bgCircle {
+  height: 50px;
+  width: 50px;
+  background-color: #a4c0db;
+  border-radius: 50%;
+  display: inline-block;
+}
