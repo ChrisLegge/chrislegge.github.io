@@ -51,7 +51,7 @@ nav li:first-child{
   width: 250px;
   z-index: 999;
   background-color: rgba(240, 240, 240, 0.5);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(10px);
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   display: none;
   flex-direction: column;
