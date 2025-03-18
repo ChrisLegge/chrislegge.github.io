@@ -75,4 +75,5 @@ nav li:first-child{
   background-color: #f0f0f0;
   padding-left: 30%;
   padding-top: 10%;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
