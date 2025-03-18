@@ -72,7 +72,7 @@ nav li:first-child{
 }
 
 #sectionOneText{
-  float: left;
+  float: right;
   background-color: #f0f0f0;
   margin-left: 25%;
   margin-right: 52%;
@@ -86,7 +86,7 @@ nav li:first-child{
 }
 
 #sectionOneText{
-  float: right;
+  float: left;
   margin-left: 52%;
   margin-right: 25%;
   margin-top: 10%;
