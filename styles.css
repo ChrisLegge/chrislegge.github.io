@@ -138,9 +138,11 @@ nav li:first-child{
 }
 
 #contactText{
+  background-color: #f0f0f0;
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 10%;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
