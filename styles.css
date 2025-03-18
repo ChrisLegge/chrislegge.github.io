@@ -70,3 +70,9 @@ nav li:first-child{
 .sidebar a:hover{
   background-color: #f0f0f0;
 }
+
+#sectionOneText{
+  background-color: #f0f0f0;
+  padding-left: 10%;
+  padding-top: 10%;
+}
