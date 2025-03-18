@@ -72,18 +72,20 @@ nav li:first-child{
 }
 
 #sectionOneText{
-  float: right;
+  float: left;
   background-color: #f0f0f0;
   padding-left: 20px;
   padding-top: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
   border-radius: 10px;
+  margin-top: 10%;
+  margin-left: 20%;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 #sectionOneImg{
-  float: left;
+  float: right;
   margin-left: 52%;
   margin-right: 25%;
   margin-top: 10%;
