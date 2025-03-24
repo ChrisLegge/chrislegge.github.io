@@ -81,6 +81,7 @@ nav li:first-child{
   border-radius: 10px;
   margin-top: 10%;
   margin-left: 20%;
+  margin-right: 2%;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   width: 30%;
 }
@@ -89,6 +90,7 @@ nav li:first-child{
   float: right;
   margin-right: 20%;
   margin-top: 10%;
+  margin-left: 2%;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   width: 30%;
