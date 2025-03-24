@@ -97,8 +97,7 @@ nav li:first-child{
 #sectionTwoText{
   float: left;
   background-color: #f0f0f0;
-  margin-left: 25%;
-  margin-right: 52%;
+  margin-left: 10%;
   margin-top: 10%;
   padding-left: 20px;
   padding-top: 20px;
@@ -106,22 +105,22 @@ nav li:first-child{
   padding-bottom: 20px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  width: 30%;
 }
 
 #sectionTwoImg{
   float: right;
-  margin-left: 52%;
-  margin-right: 25%;
+  margin-right: 10%;
   margin-top: 10%;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  width: 30%;
 }
 
 #sectionThreeText{
   float: right;
   background-color: #f0f0f0;
-  margin-left: 25%;
-  margin-right: 52%;
+  margin-left: 10%;
   margin-top: 10%;
   padding-left: 20px;
   padding-top: 20px;
@@ -129,15 +128,16 @@ nav li:first-child{
   padding-bottom: 20px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  width: 30%;
 }
 
 #sectionThreeImg{
   float: left;
-  margin-left: 52%;
-  margin-right: 25%;
+  margin-right: 10%;
   margin-top: 10%;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  width: 30%
 }
 
 #contactText{
