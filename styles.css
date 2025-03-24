@@ -82,6 +82,7 @@ nav li:first-child{
   margin-top: 10%;
   margin-left: 20%;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  width: 30%;
 }
 
 #sectionOneImg{
@@ -91,6 +92,7 @@ nav li:first-child{
   margin-top: 10%;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  width: 30%;
 }
 
 #sectionTwoText{
