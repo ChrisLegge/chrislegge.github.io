@@ -5,7 +5,7 @@ const portfolioData = {
     // About section
     about: {
         name: "Chris Legge",
-        title: "Computer & Electrical Engineering Student",
+        title: "Computer & Electronic Engineering Student",
         description: "I am a passionate engineering student with a strong interest in computer systems, embedded hardware, and software development. I enjoy working on projects that combine both hardware and software to create innovative solutions.",
         github: "https://github.com/ChrisLegge",
         linkedin: "https://www.linkedin.com/in/chris-legge/",
