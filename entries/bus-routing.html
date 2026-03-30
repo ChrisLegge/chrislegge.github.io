@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe in Minecraft - Portfolio</title>
+    <title>Predictive Bus Routing - Portfolio</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -43,8 +43,8 @@
                 Back to Projects
             </a>
 
-            <h1 class="page-title">Tic Tac Toe in Minecraft</h1>
-            <p class="entry-meta">January 2024 – April 2024</p>
+            <h1 class="page-title">Predictive Bus Routing</h1>
+            <p class="entry-meta">November 2025 – March 2026</p>
 
 
             <!-- SECTION 1: Overview -->
@@ -52,15 +52,16 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Overview</h3>
                     <p>
-                        I built a fully functional Tic Tac Toe game in Minecraft using only redstone components,
-                        with no mods or command blocks. The game was designed for two players who alternate turns,
-                        with each player's pieces represented by 'X' and 'O' shapes stored in a ROM.
+                        In a team we designed a system that would increase the efficinecy of busses using an
+                        machine learning algorithm that uses accurate data modeled from accross the UK to Predict
+                        the footfall at each bus stop and dynamically reroute busses to pick up passangers so that
+                        you would spend less time waiting and less time travelling.
                     </p>
                 </div>
                 <figure class="entry-figure">
                     <!-- CHANGE: swap in a screenshot of the finished board -->
-                    <img src="../images/projects/project2.jpg" alt="Tic Tac Toe board in Minecraft" class="entry-photo">
-                    <figcaption class="entry-caption">The finished Tic Tac Toe board</figcaption>
+                    <img src="../images/fullPage/busRouting/render.jpg" alt="Render of the final product" class="entry-photo">
+                    <figcaption class="entry-caption">Render of the simulation in Blender</figcaption>
                 </figure>
             </section>
 
@@ -69,18 +70,20 @@
             <!-- SECTION 2: Logic & Design -->
             <section class="entry-section entry-section--reversed">
                 <div class="entry-text">
-                    <h3 class="entry-heading">Logic & Design</h3>
+                    <h3 class="entry-heading">Physical Board</h3>
                     <p>
-                        The game logic was implemented entirely using boolean logic and redstone circuits,
-                        including AND, OR, and NOT gates. I used several digital electronics techniques —
-                        multiplexers, encoders, and decoders — to manage the game state and determine the
-                        winner, with a score display on the side of the board.
+                        My main part of the project was to make the physical map, so that people could see at bus stops
+                        when the next bus will arrive, I orginally designed a custom PCB for this part of the project.
+                        However, this was out of budget for out small project, so instead I soldered the light map together
+                        from a long strip of LEDs, then I added machine learning model to my Arduino so that you could see
+                        the busses moving on the map. I then repeated this using verilog and and FPGA board so that we could
+                        run the different settings and it could run faster.
                     </p>
                 </div>
                 <figure class="entry-figure">
                     <!-- CHANGE: swap in a photo of the redstone circuitry underneath -->
-                    <img src="../images/projects/project2.jpg" alt="Redstone logic underneath the board" class="entry-photo">
-                    <figcaption class="entry-caption">The redstone circuitry powering the game</figcaption>
+                    <img src="../images/fullPage/busRouting/map" alt="The physical LED map" class="entry-photo">
+                    <figcaption class="entry-caption">The physical LED map</figcaption>
                 </figure>
             </section>
 
@@ -91,15 +94,15 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Results & Reflections</h3>
                     <p>
-                        The project required careful planning to ensure it was both functional and visually
-                        appealing within Minecraft's constraints. It allowed me to apply my knowledge of
-                        digital logic design and boolean algebra in a hands-on and creative way, and
-                        deepened my understanding of how physical logic circuits work.
+                        The project is for the Engeneers Without Borders competition, which at the time of writing has not been submitted yet.
+                        The project required careful planning from all members of the group so that we could get it done on time, we created a
+                        gantt chart to keep on track and assigned tasks to everyones strengths which is why we managed to be so successfull with
+                        our project management, overall we worked well as a team together and the project management played to our strengths.
                     </p>
                 </div>
                 <figure class="entry-figure">
                     <!-- CHANGE: swap in a photo of the game being played, or the score display -->
-                    <img src="../images/projects/project2.jpg" alt="Game in progress" class="entry-photo">
+                    <img src="../images/fullPage/busRouting/ewb" alt="Game in progress" class="entry-photo">
                     <figcaption class="entry-caption">The game being played</figcaption>
                 </figure>
             </section>

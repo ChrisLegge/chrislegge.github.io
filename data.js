@@ -258,30 +258,50 @@ const portfolioData = {
     //             items: array of { name } objects
     skills: [
         {
-            category: "Skill Category",
-            description: "A short description of this skill category.",
+            category: "Programming",
+            //description: "A short description of this skill category.",
             items: [
-                { name: "Skill 1" },
-                { name: "Skill 2" },
-                { name: "Skill 3" }
+                { name: "C#" },
+                { name: "C" },
+                { name: "Python" },
+                { name: "Java" },
+                { name: "HTML" },
+                { name: "CSS" },
+                { name: "Java Script" },
+                { name: "C++" },
+                { name: "Verilog (Basic)" }
             ]
         },
         {
-            category: "Skill Category",
-            description: "A short description of this skill category.",
+            category: "Video Editing",
+            //description: "A short description of this skill category.",
             items: [
-                { name: "Skill 1" },
-                { name: "Skill 2" },
-                { name: "Skill 3" }
+                { name: "Da Vinci Resolve" },
+                { name: "Final Cut" },
+                { name: "Filmora" },
+                { name: "Blender (3D VFX)" }
             ]
         },
         {
-            category: "Skill Category",
-            description: "A short description of this skill category.",
+            category: "Engineering",
+            //description: "A short description of this skill category.",
             items: [
-                { name: "Skill 1" },
-                { name: "Skill 2" },
-                { name: "Skill 3" }
+                { name: "SolidWorks" },
+                { name: "GitHub" },
+                { name: "NI Multisim" },
+                { name: "FEMM" },
+                { name: "RS Design Spark" }
+            ]
+        },
+        {
+            category: "Professional Applications",
+            //description: "A short description of this skill category.",
+            items: [
+                { name: "Word" },
+                { name: "Power Point" },
+                { name: "Excel" },
+                { name: "Outlook" },
+                { name: "OneNote" }
             ]
         }
     ],
