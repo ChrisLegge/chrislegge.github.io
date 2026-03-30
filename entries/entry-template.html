@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CHANGE: Update the title -->
+    <title>Entry Title - Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <a href="../index.html"        class="nav-link">Home</a>
+            <a href="../experience.html"   class="nav-link">Experience</a>
+            <a href="../projects.html"     class="nav-link">Projects</a>
+            <a href="../competitions.html" class="nav-link">Competitions</a>
+            <a href="../interests.html"    class="nav-link">Interests</a>
+            <a href="../skills.html"       class="nav-link">Skills</a>
+            <a href="../CVs/CV 8-1-26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../gallery.html"      class="nav-link">Gallery</a>
+        </div>
+        <div class="nav-right">
+            <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="entry-page">
+
+            <!-- CHANGE: Update href to point to the right parent page -->
+            <a href="../projects.html" class="entry-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Back to Projects
+            </a>
+
+            <!-- CHANGE: Update title and dates -->
+            <h1 class="page-title">Entry Title Here</h1>
+            <p class="entry-meta">January 2025 – March 2025</p>
+
+            <!-- ============================================================
+                 HOW TO USE THIS TEMPLATE
+                 ============================================================
+                 Each "section" is one paragraph + one image, side by side.
+
+                 · Default layout  → text on LEFT,  image on RIGHT
+                 · Add class "entry-section--reversed" → image on LEFT, text on RIGHT
+
+                 Alternate between the two to create the zigzag effect.
+
+                 Copy-paste as many sections as you need.
+                 Separate them with <hr class="entry-divider">.
+
+                 Each section can optionally have a heading (<h3>).
+                 Image captions are optional — delete the <figcaption> if unused.
+                 ============================================================ -->
+
+
+            <!-- SECTION 1: text left, image right -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Overview</h3>
+                    <p>
+                        Write your first paragraph here. Describe the background,
+                        motivation, or an overview of this entry. There is no limit
+                        on length — write as much as you like.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- CHANGE: update src and alt -->
+                    <img src="../images/projects/project1.jpg" alt="Description of image" class="entry-photo">
+                    <!-- Optional caption — delete this line if not needed -->
+                    <figcaption class="entry-caption">Optional image caption</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 2: image left, text right (reversed) -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Design & Build</h3>
+                    <p>
+                        Write your second paragraph here. Go into detail about the
+                        process, the challenges you faced, and how you solved them.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/projects/project1.jpg" alt="Description of image" class="entry-photo">
+                    <figcaption class="entry-caption">Optional image caption</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 3: text left, image right -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Results & Reflections</h3>
+                    <p>
+                        Write your third paragraph here. Discuss the outcome,
+                        what you learned, and what you would do differently.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/projects/project1.jpg" alt="Description of image" class="entry-photo">
+                    <figcaption class="entry-caption">Optional image caption</figcaption>
+                </figure>
+            </section>
+
+            <!-- Add more sections here, alternating with <hr class="entry-divider"> -->
+
+        </div>
+    </main>
+
+    <script src="../data.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>

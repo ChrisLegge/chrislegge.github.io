@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe in Minecraft - Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <a href="../index.html"        class="nav-link">Home</a>
+            <a href="../experience.html"   class="nav-link">Experience</a>
+            <a href="../projects.html"     class="nav-link active">Projects</a>
+            <a href="../competitions.html" class="nav-link">Competitions</a>
+            <a href="../interests.html"    class="nav-link">Interests</a>
+            <a href="../skills.html"       class="nav-link">Skills</a>
+            <a href="../CVs/CV 8-1-26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../gallery.html"      class="nav-link">Gallery</a>
+        </div>
+        <div class="nav-right">
+            <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="entry-page">
+
+            <a href="../projects.html" class="entry-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Back to Projects
+            </a>
+
+            <h1 class="page-title">Tic Tac Toe in Minecraft</h1>
+            <p class="entry-meta">January 2024 – April 2024</p>
+
+
+            <!-- SECTION 1: Overview -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Overview</h3>
+                    <p>
+                        I built a fully functional Tic Tac Toe game in Minecraft using only redstone components,
+                        with no mods or command blocks. The game was designed for two players who alternate turns,
+                        with each player's pieces represented by 'X' and 'O' shapes stored in a ROM.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- CHANGE: swap in a screenshot of the finished board -->
+                    <img src="../images/projects/project2.jpg" alt="Tic Tac Toe board in Minecraft" class="entry-photo">
+                    <figcaption class="entry-caption">The finished Tic Tac Toe board</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 2: Logic & Design -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Logic & Design</h3>
+                    <p>
+                        The game logic was implemented entirely using boolean logic and redstone circuits,
+                        including AND, OR, and NOT gates. I used several digital electronics techniques —
+                        multiplexers, encoders, and decoders — to manage the game state and determine the
+                        winner, with a score display on the side of the board.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- CHANGE: swap in a photo of the redstone circuitry underneath -->
+                    <img src="../images/projects/project2.jpg" alt="Redstone logic underneath the board" class="entry-photo">
+                    <figcaption class="entry-caption">The redstone circuitry powering the game</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 3: Results & Reflections -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Results & Reflections</h3>
+                    <p>
+                        The project required careful planning to ensure it was both functional and visually
+                        appealing within Minecraft's constraints. It allowed me to apply my knowledge of
+                        digital logic design and boolean algebra in a hands-on and creative way, and
+                        deepened my understanding of how physical logic circuits work.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- CHANGE: swap in a photo of the game being played, or the score display -->
+                    <img src="../images/projects/project2.jpg" alt="Game in progress" class="entry-photo">
+                    <figcaption class="entry-caption">The game being played</figcaption>
+                </figure>
+            </section>
+
+            <!-- Add more sections here, alternating with <hr class="entry-divider"> -->
+
+        </div>
+    </main>
+
+    <script src="../data.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <a href="index.html"        class="nav-link">Home</a>
+            <a href="experience.html"   class="nav-link">Experience</a>
+            <a href="projects.html"     class="nav-link">Projects</a>
+            <a href="competitions.html" class="nav-link">Competitions</a>
+            <a href="interests.html"    class="nav-link">Interests</a>
+            <a href="skills.html"       class="nav-link">Skills</a>
+            <a href="CVs/CV 8-1-26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="gallery.html"      class="nav-link active">Gallery</a>
+        </div>
+        <div class="nav-right">
+            <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="detail-page">
+            <h1 class="page-title">Gallery</h1>
+            <!-- Gallery images are populated from data.js → portfolioData.gallery -->
+            <div class="gallery-masonry" id="galleryMasonry"></div>
+        </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
