@@ -234,22 +234,44 @@ const portfolioData = {
     // Each entry: title (required), image (required), summary (required), tags (optional array)
     interests: [
         {
-            title: "Interest Title",
+            title: "Mountain Biking",
             image: "images/interests/placeholder1.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text.",
-            tags: ["Tag 1", "Tag 2"]
+            summary: "A short description of this interest goes here. Replace this with your own text."
         },
         {
-            title: "Interest Title",
+            title: "Magic",
             image: "images/interests/placeholder2.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text.",
-            tags: ["Tag 1", "Tag 2"]
+            summary: "A short description of this interest goes here. Replace this with your own text."
         },
         {
-            title: "Interest Title",
+            title: "Camping",
             image: "images/interests/placeholder3.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text.",
-            tags: ["Tag 1", "Tag 2"]
+            summary: "A short description of this interest goes here. Replace this with your own text."
+        },
+        {
+            title: "Scuba Diving",
+            image: "images/interests/placeholder2.jpg",
+            summary: "A short description of this interest goes here. Replace this with your own text."
+        },
+        {
+            title: "Hockey",
+            image: "images/interests/placeholder2.jpg",
+            summary: "A short description of this interest goes here. Replace this with your own text."
+        },
+        {
+            title: "Guitar",
+            image: "images/interests/placeholder2.jpg",
+            summary: "A short description of this interest goes here. Replace this with your own text."
+        },
+        {
+            title: "Solving Puzzles",
+            image: "images/interests/placeholder2.jpg",
+            summary: "A short description of this interest goes here. Replace this with your own text."
+        },
+        {
+            title: "Stop motion animation",
+            image: "images/interests/placeholder2.jpg",
+            summary: "A short description of this interest goes here. Replace this with your own text."
         }
     ],
 
