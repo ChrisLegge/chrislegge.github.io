@@ -43,8 +43,8 @@
                 Back to Projects
             </a>
 
-            <h1 class="page-title">Tic Tac Toe in Minecraft</h1>
-            <p class="entry-meta">January 2024 – April 2024</p>
+            <h1 class="page-title">Custom Lightsaber</h1>
+            <p class="entry-meta">Feburary 2025 – March 2025</p>
 
 
             <!-- SECTION 1: Overview -->
@@ -52,15 +52,15 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Overview</h3>
                     <p>
-                        I built a fully functional Tic Tac Toe game in Minecraft using only redstone components,
-                        with no mods or command blocks. The game was designed for two players who alternate turns,
-                        with each player's pieces represented by 'X' and 'O' shapes stored in a ROM.
+                        I built a fully functional Lightsaber using an Arduino mircrocontroller and WS2812-b LEDs that can
+                        be indivdually addessed to create animations through my code. I added switches and buttons for controls
+                        and used professional workshop equiptment to create the handle.
                     </p>
                 </div>
                 <figure class="entry-figure">
                     <!-- CHANGE: swap in a screenshot of the finished board -->
-                    <img src="../images/projects/project2.jpg" alt="Tic Tac Toe board in Minecraft" class="entry-photo">
-                    <figcaption class="entry-caption">The finished Tic Tac Toe board</figcaption>
+                    <img src="../images/fullPage/lightsaber/wholeSaber.jpg" alt="Lightsaber" class="entry-photo">
+                    <figcaption class="entry-caption">The finished lightsaber</figcaption>
                 </figure>
             </section>
 
@@ -69,18 +69,20 @@
             <!-- SECTION 2: Logic & Design -->
             <section class="entry-section entry-section--reversed">
                 <div class="entry-text">
-                    <h3 class="entry-heading">Logic & Design</h3>
+                    <h3 class="entry-heading">The Handle</h3>
                     <p>
-                        The game logic was implemented entirely using boolean logic and redstone circuits,
-                        including AND, OR, and NOT gates. I used several digital electronics techniques —
-                        multiplexers, encoders, and decoders — to manage the game state and determine the
-                        winner, with a score display on the side of the board.
+                        The handle is mainly made from 2 tubes of PVC pipe, one that fit completely inside the other. After making a design, I
+                        cut the PVC with a hacksaw and used a belt sander to get the pieces smooth. For the parts with details or with bevels I
+                        used the laithe to cut into the PVC evenly to get the right details. For the grip strips I used a laser cutter and a sheet
+                        of 3mm acrylic to get an accurate shape, I then used a polymer welding glue to put all the pieces together after spray painting
+                        them the right colour, with added details such as dirt to add wear and tear. I designed a small circle to cover the bottom so there
+                        would be no hole at the bottom of the PVC pipe.
                     </p>
                 </div>
                 <figure class="entry-figure">
                     <!-- CHANGE: swap in a photo of the redstone circuitry underneath -->
-                    <img src="../images/projects/project2.jpg" alt="Redstone logic underneath the board" class="entry-photo">
-                    <figcaption class="entry-caption">The redstone circuitry powering the game</figcaption>
+                    <img src="../images/fullPage/lightsaber/handle.jpg" alt="The handle" class="entry-photo">
+                    <figcaption class="entry-caption">The handle</figcaption>
                 </figure>
             </section>
 
@@ -89,18 +91,21 @@
             <!-- SECTION 3: Results & Reflections -->
             <section class="entry-section">
                 <div class="entry-text">
-                    <h3 class="entry-heading">Results & Reflections</h3>
+                    <h3 class="entry-heading">The Blade</h3>
                     <p>
-                        The project required careful planning to ensure it was both functional and visually
-                        appealing within Minecraft's constraints. It allowed me to apply my knowledge of
-                        digital logic design and boolean algebra in a hands-on and creative way, and
-                        deepened my understanding of how physical logic circuits work.
+                        The Blade was made from a spare blade that I bought cheap from a lightsaber shop, I then added 2 strips of WS2812-b LEDs that I soldered
+                        end to end so that were part of the same strip. I stuck the 2 strips back to back with a wooden pole through the middle so it diddn't collapse
+                        in the middle. I covered the LEDs in packing foam as a cheap diffuser and connected the 3 pins to a removable connector that I soldered the
+                        other end to an Arduino, I also added a battery, a switch and a button. After some programming and a lot of testing I could put all the
+                        electronics in the lightsaber. I had a switch that cut power to the battery on the back, along with a removable panel to change the battery.
+                        An on and off switch that was programmed into the Arduino so that the blade would do an animation to slide up or down the blade, and a button to
+                        change the colour. I am going to add other animations, which I have already programmed, for when I press and hold the button.
                     </p>
                 </div>
                 <figure class="entry-figure">
                     <!-- CHANGE: swap in a photo of the game being played, or the score display -->
-                    <img src="../images/projects/project2.jpg" alt="Game in progress" class="entry-photo">
-                    <figcaption class="entry-caption">The game being played</figcaption>
+                    <img src="../images/fullPage/lightsaber/electronics.jpg" alt="The electronics" class="entry-photo">
+                    <figcaption class="entry-caption">The electronics</figcaption>
                 </figure>
             </section>
 

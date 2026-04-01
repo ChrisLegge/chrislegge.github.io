@@ -207,8 +207,8 @@ const portfolioData = {
             title: "Kaggle Vesuvius Challenge",
             image: "images/competitions/comp1.jpg",
             dates: "February 2026",
-            summary: "Currently in progress. I am participating in the Kaggle Vesuvius challange, which involved making a machine learning model to digitally unwrap ancient scrolls that have been damaged by the eruption of Mount Vesuvius.",
-            details: "The Kaggle Vesuvius Challenge is a competition that focuses on developing machine learning models to digitally unwrap ancient scrolls that have been damaged by the eruption of Mount Vesuvius and can not be unwrapped physically because the scolls could be damaged further and the informarion lost forever. The goal of the challenge is to create a model that can accurately reconstruct the text and images on the scrolls, which are often charred and difficult to read. This involves using techniques such as image processing, natural language processing, and deep learning to decipher the contents of the scrolls. The competition provides an opportunity for us to apply machine learning skills to a real-world problem and contribute to the preservation of ancient history."
+            summary: "I participated in the Kaggle Vesuvius challange, which involved making a machine learning model to digitally unwrap ancient scrolls that have been damaged by the eruption of Mount Vesuvius.",
+            details: "The Kaggle Vesuvius Challenge is a competition that focuses on developing machine learning models to digitally unwrap ancient scrolls that have been damaged by the eruption of Mount Vesuvius and can not be unwrapped physically because the scolls could be damaged further and the informarion lost forever. The goal of the challenge is to create a model that can accurately reconstruct the text and images on the scrolls, which are often charred and difficult to read. This involves using techniques such as image processing, natural language processing, and deep learning to decipher the contents of the scrolls. The competition provides an opportunity for us to apply machine learning skills to a real-world problem and contribute to the preservation of ancient history. We did not win the competition or come very hugh up, however the stratagy that we used was very successful and was used in the top models, we unfortunatelly did not have the hardware of some of our competitors and could not get our hardware to train as fast or as accuratly due to our limitations. The project was a bit too complicated for a first year university student, but I am happy with our result and believe that with better hardware we could have placed higher up in the competition."
         },
         {
             title: "IMC Prosperity 4",
@@ -236,42 +236,42 @@ const portfolioData = {
         {
             title: "Mountain Biking",
             image: "images/interests/placeholder1.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text."
+            summary: "I tackle technical trails and long-distance routes such as the London to Brighton."
         },
         {
             title: "Magic",
             image: "images/interests/placeholder2.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text."
+            summary: " I practice close-up magic, developing strong presentation, confidence, and audience engagement skills."
         },
         {
             title: "Camping",
             image: "images/interests/placeholder3.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text."
+            summary: "I enjoy multi-day hiking and camping trips, strengthening my planning, navigation, and self-sufficiency skills and have completed my Bronze, Silver and Gold Duke of Edinburgh award."
         },
         {
             title: "Scuba Diving",
             image: "images/interests/placeholder2.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text."
+            summary: "I am a certified scuba diver with experience diving in varied conditions across several countries."
         },
         {
             title: "Hockey",
             image: "images/interests/placeholder2.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text."
+            summary: " I play hockey every week, contributing to team performance through communication, teamwork, and strategic thinking."
         },
         {
             title: "Guitar",
             image: "images/interests/placeholder2.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text."
+            summary: "I play guitar in my spare time, continually improving through self-directed learning and practice."
         },
         {
             title: "Solving Puzzles",
             image: "images/interests/placeholder2.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text."
+            summary: "I regularly solve logic puzzles such as Sudoku and the LinkedIn daily puzzles to sharpen problem-solving and analytical thinking skills."
         },
         {
             title: "Stop motion animation",
             image: "images/interests/placeholder2.jpg",
-            summary: "A short description of this interest goes here. Replace this with your own text."
+            summary: "I have made several stop motion animations using both LEGO and plasticine, after creating a storyboard and editing the recorded footage I have a complete short film."
         }
     ],
 
