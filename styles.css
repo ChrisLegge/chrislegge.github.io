@@ -1108,6 +1108,11 @@ video.detail-image {
     font-weight: 500;
 }
 
+.skill-name::before {
+    content: "• ";
+    color: var(--text-secondary);
+}
+
 .skill-level-text {
     font-size: 0.82rem;
     color: var(--text-secondary);
