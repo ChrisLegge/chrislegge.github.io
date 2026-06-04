@@ -10,7 +10,7 @@ const portfolioData = {
         github: "https://github.com/ChrisLegge",
         linkedin: "https://www.linkedin.com/in/chris-legge/",
         itch: "https://gingerbuiscuit71.itch.io",
-        cv: "CVs/cv_4_6_26.pdf",
+        cv: "/CVs/cv_4_6_26.pdf",
         email: "chrislegge151@outlook.com"
     },
 
