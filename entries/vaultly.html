@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaultly - Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <a href="../index.html"        class="nav-link">Home</a>
+            <a href="../experience.html"   class="nav-link">Experience</a>
+            <a href="../projects.html"     class="nav-link active">Projects</a>
+            <a href="../competitions.html" class="nav-link">Competitions</a>
+            <a href="../interests.html"    class="nav-link">Interests</a>
+            <a href="../skills.html"       class="nav-link">Skills</a>
+            <a href="../CVs/cv_4_6_26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../gallery.html"      class="nav-link">Gallery</a>
+        </div>
+        <div class="nav-right">
+            <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="entry-page">
+
+            <a href="../projects.html" class="entry-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Back to Projects
+            </a>
+
+            <h1 class="page-title">Vaultly</h1>
+            <p class="entry-meta">January 2026 – Present &nbsp;·&nbsp; <a href="https://getvaultly.uk" target="_blank">getvaultly.uk</a></p>
+
+
+            <!-- SECTION 1: Overview -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Overview</h3>
+                    <p>
+                        Vaultly is a personal document vault SaaS product that I designed, built, and deployed
+                        entirely solo — from initial concept through to live beta users on both the App Store
+                        (TestFlight) and Google Play. The product lets users securely store, organise, and search
+                        their important documents, with automatic data extraction from scanned receipts and files.
+                    </p>
+                    <p>
+                        Building Vaultly end-to-end as a solo developer required me to work across every layer of
+                        the stack: a REST API backend, a responsive web app, native iOS and Android apps, and the
+                        infrastructure to host and run it all reliably from home.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of the Vaultly home screen or dashboard -->
+                    <img src="../images/projects/vaultly.jpg" alt="Vaultly app overview" class="entry-photo">
+                    <figcaption class="entry-caption">Vaultly — live at getvaultly.uk</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 2: Tech Stack -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Tech Stack</h3>
+                    <p>
+                        The backend is a Python <strong>FastAPI</strong> REST API with async SQLAlchemy and
+                        <strong>PostgreSQL</strong>, chosen for performance and type safety. The web frontend
+                        is built with <strong>Next.js 14</strong> (App Router) and React, sharing a typed API
+                        client with the mobile apps. The mobile apps are built with <strong>React Native
+                        (Expo)</strong>, targeting both iOS and Android from a single codebase.
+                    </p>
+                    <p>
+                        The entire stack is containerised with <strong>Docker Compose</strong> and
+                        self-hosted on a Mac Mini, with a <strong>Cloudflare Tunnel</strong> providing HTTPS
+                        without exposing a port directly to the internet. A <strong>pgvector</strong>
+                        extension in PostgreSQL lays the groundwork for future semantic search.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a diagram or screenshot of the architecture -->
+                    <img src="../images/projects/vaultly-stack.jpg" alt="Vaultly tech stack" class="entry-photo">
+                    <figcaption class="entry-caption">Full-stack architecture across web, mobile, and backend</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 3: OCR Pipeline -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">OCR & Document Processing</h3>
+                    <p>
+                        A key feature of Vaultly is automatic data extraction from uploaded documents. I built
+                        an OCR pipeline using <strong>Tesseract</strong> with a custom rule-based Named Entity
+                        Recognition (NER) layer to extract merchant names, prices, and dates from scanned
+                        receipts and documents.
+                    </p>
+                    <p>
+                        To improve future accuracy, I built a labelled training dataset of 30+ diverse documents,
+                        with plans to fine-tune a <strong>DistilBERT</strong> model for better entity extraction.
+                        The pipeline feeds structured data directly into the database, reducing manual data entry
+                        for users.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of the OCR extraction in action -->
+                    <img src="../images/projects/vaultly-ocr.jpg" alt="Vaultly OCR pipeline" class="entry-photo">
+                    <figcaption class="entry-caption">Automatic data extraction from uploaded receipts</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 4: Auth & Security -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Authentication & Security</h3>
+                    <p>
+                        Security was a priority from the start. I implemented a full authentication system
+                        including <strong>bcrypt</strong> password hashing, <strong>httpOnly JWT cookies</strong>
+                        with refresh token rotation and server-side invalidation, account lockout after repeated
+                        failed attempts, and per-IP rate limiting to prevent brute-force attacks.
+                    </p>
+                    <p>
+                        On the mobile apps, I added <strong>biometric unlock</strong> (Face ID and fingerprint)
+                        for a fast and secure login experience. I also handled full <strong>UK GDPR
+                        compliance</strong>: privacy policy, terms of service, cookie consent, audit logging,
+                        data export, account deletion, and CAN-SPAM compliant email unsubscribe flows.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of the login or security settings screen -->
+                    <img src="../images/projects/vaultly-auth.jpg" alt="Vaultly authentication" class="entry-photo">
+                    <figcaption class="entry-caption">Secure authentication with biometric unlock on mobile</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 5: Infrastructure -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Self-Hosted Infrastructure & DevOps</h3>
+                    <p>
+                        The entire stack runs on a <strong>Mac Mini</strong> at home using Docker Compose,
+                        with a Cloudflare Tunnel providing secure HTTPS access. I built a fully automated
+                        CI/CD pipeline using a cron-based deploy script that pulls the latest changes,
+                        rebuilds containers, and runs health checks automatically.
+                    </p>
+                    <p>
+                        Reliability features include <strong>nightly PostgreSQL backups</strong> to a
+                        separate location and <strong>push notification alerts</strong> sent to my phone
+                        if a deploy fails or a service goes down. This gave me hands-on experience with
+                        production infrastructure, monitoring, and incident response at a small scale.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a photo of the Mac Mini setup or a screenshot of the deploy logs -->
+                    <img src="../images/projects/vaultly-infra.jpg" alt="Vaultly self-hosted infrastructure" class="entry-photo">
+                    <figcaption class="entry-caption">Self-hosted on a Mac Mini with Docker Compose and Cloudflare</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 6: Features & Results -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Features & Results</h3>
+                    <p>
+                        Vaultly launched to beta testers via <strong>TestFlight</strong> (iOS) and
+                        <strong>Google Play</strong> closed testing, with real users actively using the
+                        product. Shipped features include document expiry tracking, subscription spike
+                        detection, multi-vault organisation, bulk upload, and semantic search groundwork
+                        using pgvector embeddings.
+                    </p>
+                    <p>
+                        Building a complete SaaS product solo — from database schema to App Store submission
+                        — taught me more about software engineering in practice than any single course could.
+                        Every decision, from choosing a tech stack to handling a production outage, was mine
+                        to make and learn from.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of the app on a phone or the TestFlight listing -->
+                    <img src="../images/projects/vaultly-mobile.jpg" alt="Vaultly on iOS and Android" class="entry-photo">
+                    <figcaption class="entry-caption">Live on TestFlight (iOS) and Google Play (Android)</figcaption>
+                </figure>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../data.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
