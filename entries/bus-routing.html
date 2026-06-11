@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predictive Bus Routing - Portfolio</title>
+    <title>Predictive Bus Routing — Chris Legge</title>
+    <meta name="description" content="A team project for the Engineers Without Borders UK challenge: a machine-learning bus rerouting system with a physical LED map driven by Arduino and FPGA.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f8ff7'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='52' font-family='Helvetica,Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECL%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -52,14 +58,13 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Overview</h3>
                     <p>
-                        In a team we designed a system that would increase the efficinecy of busses using an
-                        machine learning algorithm that uses accurate data modeled from accross the UK to Predict
-                        the footfall at each bus stop and dynamically reroute busses to pick up passangers so that
-                        you would spend less time waiting and less time travelling.
+                        As a team we designed a system to increase the efficiency of buses using a
+                        machine learning algorithm. It uses accurate data modelled from across the UK to predict
+                        the footfall at each bus stop and dynamically reroute buses to pick up passengers, so that
+                        you spend less time waiting and less time travelling.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <!-- CHANGE: swap in a screenshot of the finished board -->
                     <img src="../images/fullPage/busRouting/render.jpg" alt="Render of the final product" class="entry-photo">
                     <figcaption class="entry-caption">Render of the simulation in Blender</figcaption>
                 </figure>
@@ -72,16 +77,15 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Physical Board</h3>
                     <p>
-                        My main part of the project was to make the physical map, so that people could see at bus stops
-                        when the next bus will arrive, I orginally designed a custom PCB for this part of the project.
-                        However, this was out of budget for out small project, so instead I soldered the light map together
-                        from a long strip of LEDs, then I added machine learning model to my Arduino so that you could see
-                        the busses moving on the map. I then repeated this using verilog and and FPGA board so that we could
+                        My main part of the project was to make the physical map, so that people at bus stops could see
+                        when the next bus will arrive. I originally designed a custom PCB for this part of the project;
+                        however, this was out of budget for our small project, so instead I soldered the light map together
+                        from a long strip of LEDs. I then added the machine learning model to my Arduino so that you could see
+                        the buses moving on the map, and repeated this using Verilog and an FPGA board so that we could
                         run the different settings and it could run faster.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <!-- CHANGE: swap in a photo of the redstone circuitry underneath -->
                     <img src="../images/fullPage/busRouting/map" alt="The physical LED map" class="entry-photo">
                     <figcaption class="entry-caption">The physical LED map</figcaption>
                 </figure>
@@ -94,14 +98,15 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Results & Reflections</h3>
                     <p>
-                        The project is for the Engeneers Without Borders competition, which at the time of writing has not been submitted yet.
-                        The project required careful planning from all members of the group so that we could get it done on time, we created a
-                        gantt chart to keep on track and assigned tasks to everyones strengths which is why we managed to be so successfull with
-                        our project management, overall we worked well as a team together and the project management played to our strengths.
+                        The project was built for the Engineers Without Borders UK Design Challenge. From hundreds of entries
+                        across the UK, our team was selected as one of just 36 Grand Finalists invited to present at the national
+                        grand finals in June 2026. The project required careful planning from every member of the group to get it
+                        done on time: we created a Gantt chart to stay on track and assigned tasks to everyone's strengths, which
+                        is why our project management was so successful. Overall we worked well together as a team, and the
+                        project management played to each of our strengths.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <!-- CHANGE: swap in a photo of the game being played, or the score display -->
                     <img src="../images/fullPage/busRouting/ewb" alt="ewb logo" class="entry-photo">
                     <figcaption class="entry-caption">EWB logo</figcaption>
                 </figure>

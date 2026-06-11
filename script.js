@@ -1,3 +1,7 @@
+// Pages inside entries/ need relative paths back to the site root
+const PATH_PREFIX = /\/entries\//.test(window.location.pathname) ? '../' : '';
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Theme Management
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
@@ -10,7 +14,7 @@ function initTheme() {
 
 function updateThemeIcon(theme) {
     const icon = document.querySelector('.theme-icon');
-    icon.textContent = theme === 'light' ? '🌙' : '☀️';
+    if (icon) icon.textContent = theme === 'light' ? '🌙' : '☀️';
 }
 
 themeToggle?.addEventListener('click', () => {
@@ -34,14 +38,104 @@ function populateAbout() {
     const cvButton     = document.getElementById('cvButton');
     const cvLink       = document.getElementById('cv-link');
 
-    if (nameEl)        nameEl.textContent        = portfolioData.about.name;
+    if (nameEl)        nameEl.textContent         = portfolioData.about.name;
     if (subtitleEl)    subtitleEl.textContent     = portfolioData.about.title;
     if (descriptionEl) descriptionEl.textContent  = portfolioData.about.description;
     if (githubLink)    githubLink.href            = portfolioData.about.github;
     if (linkedinLink)  linkedinLink.href          = portfolioData.about.linkedin;
     if (itchLink)      itchLink.href              = portfolioData.about.itch;
-    if (cvButton)      cvButton.href              = portfolioData.about.cv;
-    if (cvLink)        cvLink.href                = portfolioData.about.cv;
+    if (cvButton)      cvButton.href              = PATH_PREFIX + portfolioData.about.cv;
+    if (cvLink)        cvLink.href                = PATH_PREFIX + portfolioData.about.cv;
+}
+
+// ─── Typed rotating roles in the hero ─────────────────────────────────────────
+function initTypedRoles() {
+    const el = document.getElementById('typedRole');
+    if (!el) return;
+
+    const roles = portfolioData.about.roles?.length
+        ? portfolioData.about.roles
+        : [portfolioData.about.title];
+
+    if (REDUCED_MOTION) {
+        el.textContent = roles[0];
+        return;
+    }
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting  = false;
+
+    (function tick() {
+        const word = roles[roleIndex];
+        charIndex += deleting ? -1 : 1;
+        el.textContent = word.slice(0, charIndex);
+
+        let delay = deleting ? 35 : 70;
+        if (!deleting && charIndex === word.length) {
+            delay = 2200;
+            deleting = true;
+        } else if (deleting && charIndex === 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            delay = 400;
+        }
+        setTimeout(tick, delay);
+    })();
+}
+
+// ─── Hero stats (derived from the data itself) ────────────────────────────────
+function populateHeroStats() {
+    const wrap = document.getElementById('heroStats');
+    if (!wrap) return;
+
+    const languages = portfolioData.skills
+        .find(s => s.category === 'Programming')?.items.length || 0;
+    const years = new Date().getFullYear() - (portfolioData.about.codingSince || 2021);
+
+    const stats = [
+        { value: portfolioData.projects.length, suffix: '+', label: 'Projects built' },
+        { value: languages,                     suffix: '',  label: 'Languages & Tools' },
+        { value: years,                         suffix: '+', label: 'Years of making' }
+    ];
+
+    stats.forEach(stat => {
+        const div = document.createElement('div');
+        div.className = 'hero-stat';
+        div.innerHTML = `
+            <div class="hero-stat-value" data-target="${stat.value}" data-suffix="${stat.suffix}">0${stat.suffix}</div>
+            <div class="hero-stat-label">${stat.label}</div>
+        `;
+        wrap.appendChild(div);
+    });
+
+    const counters = wrap.querySelectorAll('.hero-stat-value');
+
+    if (REDUCED_MOTION) {
+        counters.forEach(c => { c.textContent = c.dataset.target + c.dataset.suffix; });
+        return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            observer.unobserve(entry.target);
+
+            const target = parseInt(entry.target.dataset.target);
+            const suffix = entry.target.dataset.suffix;
+            const duration = 1200;
+            const start = performance.now();
+
+            (function step(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                entry.target.textContent = Math.round(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            })(start);
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => observer.observe(c));
 }
 
 // ─── Populate Image Collage ───────────────────────────────────────────────────
@@ -62,8 +156,8 @@ function populateCollage() {
 // ─── Media helper (image or video element for cards) ─────────────────────────
 function makeCardMedia(item) {
     if (item.video) {
-        return `<div class="card-image-container card-video-wrapper" data-video-src="${item.video}">
-            <video src="${item.video}" class="card-image" autoplay muted loop playsinline></video>
+        return `<div class="card-image-container card-video-wrapper" data-video-src="${PATH_PREFIX + item.video}">
+            <video src="${PATH_PREFIX + item.video}" class="card-image" autoplay muted loop playsinline></video>
             <div class="play-overlay">
                 <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
                     <circle cx="26" cy="26" r="25" fill="rgba(0,0,0,0.55)" stroke="white" stroke-width="1.5"/>
@@ -74,7 +168,7 @@ function makeCardMedia(item) {
     }
     if (item.image) {
         return `<div class="card-image-container">
-            <img src="${item.image}" alt="${item.title}" class="card-image">
+            <img src="${PATH_PREFIX + item.image}" alt="${item.title}" class="card-image" loading="lazy">
         </div>`;
     }
     return '';
@@ -82,12 +176,18 @@ function makeCardMedia(item) {
 
 function makeDetailMedia(item) {
     if (item.video) {
-        return `<video src="${item.video}" class="detail-image" controls muted></video>`;
+        return `<video src="${PATH_PREFIX + item.video}" class="detail-image" controls muted></video>`;
     }
     if (item.image) {
-        return `<img src="${item.image}" alt="${item.title}" class="detail-image">`;
+        return `<img src="${PATH_PREFIX + item.image}" alt="${item.title}" class="detail-image" loading="lazy">`;
     }
     return '';
+}
+
+// ─── Tag chips ────────────────────────────────────────────────────────────────
+function makeTags(item) {
+    if (!item.tags?.length) return '';
+    return `<div class="card-tags">${item.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>`;
 }
 
 // ─── Build href for home-page card "Read More" buttons ───────────────────────
@@ -102,11 +202,12 @@ function createExperienceCard(exp, index) {
     card.className = 'card';
     const href = getReadMoreHref(exp, 'experience.html', index);
     card.innerHTML = `
-        <img src="${exp.logo}" alt="${exp.company}" class="card-logo">
+        <img src="${exp.logo}" alt="${exp.company || exp.title}" class="card-logo">
         <h3 class="card-title">${exp.title}</h3>
         <p class="card-company">${exp.company}</p>
         <p class="card-dates">${exp.dates}</p>
         <p class="card-summary">${exp.summary}</p>
+        ${makeTags(exp)}
         <a href="${href}" class="card-read-more">Read More</a>
     `;
     return card;
@@ -121,6 +222,7 @@ function createProjectCard(project, index) {
         <h3 class="card-title">${project.title}</h3>
         <p class="card-dates">${project.dates}</p>
         <p class="card-summary">${project.summary}</p>
+        ${makeTags(project)}
         <a href="${href}" class="card-read-more">Read More</a>
     `;
     return card;
@@ -135,6 +237,7 @@ function createCompetitionCard(comp, index) {
         <h3 class="card-title">${comp.title}</h3>
         <p class="card-dates">${comp.dates}</p>
         <p class="card-summary">${comp.summary}</p>
+        ${makeTags(comp)}
         <a href="${href}" class="card-read-more">Read More</a>
     `;
     return card;
@@ -237,7 +340,7 @@ function populateInterests() {
         const item = document.createElement('div');
         item.className = 'interest-item';
         item.innerHTML = `
-            <img src="${interest.image}" alt="${interest.title}" class="interest-image">
+            <img src="${interest.image}" alt="${interest.title}" class="interest-image" loading="lazy">
             <div class="interest-content">
                 <h3 class="interest-title">${interest.title}</h3>
                 <p class="interest-summary">${interest.summary}</p>
@@ -298,6 +401,7 @@ function populateGallery() {
 function createDetailItem(item, type) {
     const detailItem = document.createElement('div');
     detailItem.className = 'detail-item';
+    if (item.category) detailItem.dataset.category = item.category;
 
     const formattedDetails = item.details ? item.details.replace(/\n•/g, '<br>•') : '';
 
@@ -315,7 +419,7 @@ function createDetailItem(item, type) {
 
     if (type === 'experience') {
         detailItem.innerHTML = `
-            <img src="${item.logo}" alt="${item.company}" class="detail-logo">
+            <img src="${item.logo}" alt="${item.company || item.title}" class="detail-logo">
             <div class="detail-content">
                 <div class="detail-header">
                     <h3 class="detail-title">${item.title}</h3>
@@ -323,6 +427,7 @@ function createDetailItem(item, type) {
                 </div>
                 <p class="detail-company">${item.company}</p>
                 <p class="detail-summary">${item.summary}</p>
+                ${makeTags(item)}
                 ${actionButton}
             </div>
         `;
@@ -335,6 +440,7 @@ function createDetailItem(item, type) {
                     <span class="detail-dates">${item.dates}</span>
                 </div>
                 <p class="detail-summary">${item.summary}</p>
+                ${makeTags(item)}
                 ${actionButton}
             </div>
         `;
@@ -355,8 +461,8 @@ function createDetailItem(item, type) {
 
 // ─── Populate Detail Pages ────────────────────────────────────────────────────
 function populateDetailPage() {
-    const experienceList  = document.getElementById('experienceList');
-    const projectsList    = document.getElementById('projectsList');
+    const experienceList   = document.getElementById('experienceList');
+    const projectsList     = document.getElementById('projectsList');
     const competitionsList = document.getElementById('competitionsList');
 
     if (experienceList) {
@@ -374,6 +480,37 @@ function populateDetailPage() {
             competitionsList.appendChild(createDetailItem(comp, 'competition'));
         });
     }
+}
+
+// ─── Project category filters (projects page) ─────────────────────────────────
+function initProjectFilters() {
+    const list = document.getElementById('projectsList');
+    if (!list) return;
+
+    const categories = [...new Set(portfolioData.projects.map(p => p.category).filter(Boolean))];
+    if (categories.length < 2) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'filter-bar';
+
+    ['All', ...categories].forEach((cat, i) => {
+        const chip = document.createElement('button');
+        chip.className = 'filter-chip' + (i === 0 ? ' active' : '');
+        chip.textContent = cat;
+        chip.addEventListener('click', () => {
+            bar.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+
+            list.querySelectorAll('.detail-item').forEach(item => {
+                const show = cat === 'All' || item.dataset.category === cat;
+                item.style.display = show ? '' : 'none';
+                if (show) item.classList.add('animate');
+            });
+        });
+        bar.appendChild(chip);
+    });
+
+    list.parentNode.insertBefore(bar, list);
 }
 
 // ─── Auto-expand item via ?expand=INDEX URL param ─────────────────────────────
@@ -410,6 +547,28 @@ function handleExpandParam() {
     }, 150);
 }
 
+// ─── Replace broken images with styled placeholders ───────────────────────────
+function initImageFallbacks() {
+    function swap(img) {
+        const placeholder = document.createElement('div');
+        placeholder.className = ('img-placeholder ' + img.className).trim();
+        const label = (img.alt || '?').trim();
+        const span = document.createElement('span');
+        span.textContent = label.charAt(0).toUpperCase() || '?';
+        placeholder.appendChild(span);
+        placeholder.title = label;
+        img.replaceWith(placeholder);
+    }
+
+    document.querySelectorAll('img').forEach(img => {
+        if (img.complete && img.naturalWidth === 0) {
+            swap(img);
+        } else {
+            img.addEventListener('error', () => swap(img), { once: true });
+        }
+    });
+}
+
 // ─── Scroll Animation Observer ────────────────────────────────────────────────
 function initScrollAnimations() {
     const observer = new IntersectionObserver(
@@ -422,7 +581,13 @@ function initScrollAnimations() {
     );
 
     document.querySelectorAll('.card, .detail-item, .entry-section, .interest-item, .skill-category-card').forEach(el => {
-        observer.observe(el);
+        // Reveal anything already in view immediately; observe the rest
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('animate');
+        } else {
+            observer.observe(el);
+        }
     });
 }
 
@@ -457,14 +622,92 @@ function initSidebarNav() {
 // ─── Smooth Scroll for anchor links ──────────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
 
+// ─── Navbar brand (injected so every page stays in sync) ──────────────────────
+function injectNavBrand() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar || navbar.querySelector('.nav-brand')) return;
+    navbar.insertAdjacentHTML(
+        'afterbegin',
+        `<a href="${PATH_PREFIX}index.html" class="nav-brand" aria-label="Home">CL<span class="brand-dot">.</span></a>`
+    );
+}
+
+// ─── Scroll progress bar + navbar shadow + back-to-top ───────────────────────
+function initScrollChrome() {
+    const progress = document.createElement('div');
+    progress.className = 'scroll-progress';
+    document.body.appendChild(progress);
+
+    const toTop = document.createElement('button');
+    toTop.className = 'back-to-top';
+    toTop.setAttribute('aria-label', 'Back to top');
+    toTop.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>`;
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: REDUCED_MOTION ? 'auto' : 'smooth' }));
+    document.body.appendChild(toTop);
+
+    const navbar = document.querySelector('.navbar');
+
+    function onScroll() {
+        const doc = document.documentElement;
+        const max = doc.scrollHeight - doc.clientHeight;
+        progress.style.width = max > 0 ? `${(doc.scrollTop / max) * 100}%` : '0%';
+        toTop.classList.toggle('visible', doc.scrollTop > 600);
+        navbar?.classList.toggle('scrolled', doc.scrollTop > 10);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+}
+
+// ─── Footer (injected so every page stays in sync) ────────────────────────────
+function injectFooter() {
+    const about = portfolioData.about;
+    const footer = document.createElement('footer');
+    footer.className = 'site-footer';
+    footer.innerHTML = `
+        <div class="footer-inner">
+            <div>
+                <a href="${PATH_PREFIX}index.html" class="footer-brand">Chris Legge<span class="brand-dot">.</span></a>
+                <p class="footer-tagline">Computer &amp; Electronic Engineering student building things in hardware and software.</p>
+            </div>
+            <div>
+                <p class="footer-heading">Explore</p>
+                <nav class="footer-links">
+                    <a href="${PATH_PREFIX}index.html">Home</a>
+                    <a href="${PATH_PREFIX}projects.html">Projects</a>
+                    <a href="${PATH_PREFIX}experience.html">Experience</a>
+                    <a href="${PATH_PREFIX}competitions.html">Competitions</a>
+                    <a href="${PATH_PREFIX}gallery.html">Gallery</a>
+                </nav>
+            </div>
+            <div>
+                <p class="footer-heading">Connect</p>
+                <nav class="footer-links">
+                    <a href="${about.github}" target="_blank" rel="noopener">GitHub</a>
+                    <a href="${about.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="${about.itch}" target="_blank" rel="noopener">Itch.io</a>
+                    <a href="mailto:${about.email}">Email</a>
+                    <a href="${PATH_PREFIX + about.cv}">CV</a>
+                </nav>
+            </div>
+        </div>
+        <p class="footer-copy">© ${new Date().getFullYear()} Chris Legge · Built with vanilla HTML, CSS &amp; JavaScript</p>
+    `;
+    document.body.appendChild(footer);
+}
+
 // ─── Init on DOMContentLoaded ─────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+    injectNavBrand();
+
     populateAbout();
     populateCollage();
     populateHomeGrids();
@@ -474,18 +717,21 @@ document.addEventListener('DOMContentLoaded', () => {
     populateInterests();
     populateSkills();
     populateGallery();
+    initProjectFilters();
     handleExpandParam();
 
+    initTypedRoles();
+    populateHeroStats();
     initBurgerMenu();
     initVideoLightbox();
+    initScrollChrome();
+    injectFooter();
+    initImageFallbacks();
 
     setTimeout(() => {
         initScrollAnimations();
         initSidebarNav();
     }, 100);
-
-    const cvNavLink = document.getElementById('cv-link');
-    if (cvNavLink) cvNavLink.href = portfolioData.about.cv;
 });
 
 // ─── Burger Menu ─────────────────────────────────────────────────────────────
@@ -557,28 +803,32 @@ function initVideoLightbox() {
     });
 }
 
-// ─── Parallax for collage images (reduced on mobile) ─────────────────────────
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const isMobile = window.innerWidth <= 768;
-    document.querySelectorAll('.collage-image').forEach((img, index) => {
-        const speed = isMobile ? 0.008 * (index + 1) : 0.05 * (index + 1);
-        img.style.transform = `translateY(${scrolled * speed}px) scale(1)`;
-    });
-});
+// ─── Parallax for collage images (skipped for reduced motion) ────────────────
+if (!REDUCED_MOTION) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const isMobile = window.innerWidth <= 768;
+        document.querySelectorAll('.collage-image').forEach((img, index) => {
+            const speed = isMobile ? 0.008 * (index + 1) : 0.04 * (index + 1);
+            img.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    }, { passive: true });
+}
 
 // ─── 3D tilt hover effect for cards ──────────────────────────────────────────
-document.addEventListener('mousemove', e => {
-    document.querySelectorAll('.card:hover').forEach(card => {
-        const rect    = card.getBoundingClientRect();
-        const x       = e.clientX - rect.left;
-        const y       = e.clientY - rect.top;
-        const rotateX = (y - rect.height / 2) / 20;
-        const rotateY = (rect.width  / 2 - x) / 20;
-        card.style.transform = `translateY(-4px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+if (!REDUCED_MOTION) {
+    document.addEventListener('mousemove', e => {
+        document.querySelectorAll('.card:hover').forEach(card => {
+            const rect    = card.getBoundingClientRect();
+            const x       = e.clientX - rect.left;
+            const y       = e.clientY - rect.top;
+            const rotateX = (y - rect.height / 2) / 20;
+            const rotateY = (rect.width  / 2 - x) / 20;
+            card.style.transform = `translateY(-4px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
     });
-});
 
-document.addEventListener('mouseout', e => {
-    if (e.target.classList.contains('card')) e.target.style.transform = '';
-});
+    document.addEventListener('mouseout', e => {
+        if (e.target.classList?.contains('card')) e.target.style.transform = '';
+    });
+}
