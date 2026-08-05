@@ -142,6 +142,16 @@ const portfolioData = {
             pageUrl: "entries/datum.html"
         },
         {
+            title: "Beerometer",
+            image: "images/projects/beerometer.png",
+            dates: "August 2026",
+            category: "Software",
+            tags: ["SwiftUI", "SwiftData", "CloudKit", "WidgetKit", "watchOS"],
+            summary: "A tap-to-log beer tracker for iPhone and Apple Watch, built solo from idea to App Store submission — interactive widget, Watch app, Siri shortcuts, Live Activities, Swift Charts stats, a location map, and a CloudKit-backed friend leaderboard with no accounts needed.",
+            fullPage: true,
+            pageUrl: "entries/beerometer.html"
+        },
+        {
             title: "Bus Rerouting System",
             image: "images/projects/project3.jpg",
             dates: "December 2025 - March 2026",
