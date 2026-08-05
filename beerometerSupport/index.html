@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beerometer — Support</title>
+    <meta name="description" content="Support and FAQ for the Beerometer app.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f8ff7'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='52' font-family='Helvetica,Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECL%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <a href="../index.html"        class="nav-link">Home</a>
+            <a href="../experience.html"   class="nav-link">Experience</a>
+            <a href="../projects.html"     class="nav-link">Projects</a>
+            <a href="../competitions.html" class="nav-link">Competitions</a>
+            <a href="../interests.html"    class="nav-link">Interests</a>
+            <a href="../skills.html"       class="nav-link">Skills</a>
+            <a href="../CVs/cv_4_6_26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../gallery.html"      class="nav-link">Gallery</a>
+        </div>
+        <div class="nav-right">
+            <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="entry-page">
+
+            <a href="../index.html" class="entry-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Back to Home
+            </a>
+
+            <h1 class="page-title">Beerometer — Support</h1>
+            <p class="entry-meta">Questions, troubleshooting, and how to get in touch</p>
+
+            <section class="entry-section">
+                <div class="entry-text" style="max-width: 720px;">
+
+                    <h3 class="entry-heading">Getting Started</h3>
+                    <p>
+                        Log a beer by tapping the button in the app, the Home Screen widget, or the button
+                        on your Apple Watch — no account or sign-up needed, it works with your existing
+                        iCloud account. Your data syncs automatically between your iPhone and Apple Watch.
+                    </p>
+
+                    <h3 class="entry-heading">Frequently Asked Questions</h3>
+
+                    <p><strong>I logged a beer by mistake — how do I undo it?</strong><br>
+                    Tap "Undo" on the Log screen, the widget, or the Watch app to remove the most recently
+                    logged entry.</p>
+
+                    <p><strong>Why isn't the widget updating instantly?</strong><br>
+                    Widgets refresh periodically rather than instantly — open the app to always see the
+                    latest count immediately.</p>
+
+                    <p><strong>How does the leaderboard work?</strong><br>
+                    Enter a display name and make up a group code, then share that code with friends —
+                    anyone who enters the same code shows up on the same leaderboard, ranked by total
+                    beers. Leave a group at any time from the Leaderboard tab to stop appearing on it.</p>
+
+                    <p><strong>Is my data private?</strong><br>
+                    Yes, by default. Your log entries and location are stored privately in your own iCloud
+                    account and are never seen by anyone else. Only what you choose to share by joining a
+                    leaderboard group becomes visible to others with that code. See the
+                    <a href="../beerometerPrivacyPolicy/">Privacy Policy</a> for full details.</p>
+
+                    <p><strong>The map is empty — why?</strong><br>
+                    Location is optional. Make sure Beerometer has location permission enabled in your
+                    device's Settings, and that you've logged at least one beer since granting it.</p>
+
+                    <p><strong>The Live Activity / Dynamic Island isn't showing up.</strong><br>
+                    Make sure Live Activities are enabled for Beerometer in Settings → Beerometer, and that
+                    Live Activities are enabled system-wide under Settings → Face ID & Passcode (or
+                    Settings → Notifications → Live Activities, depending on iOS version).</p>
+
+                    <h3 class="entry-heading">Still need help?</h3>
+                    <p>
+                        Email <a href="mailto:chrislegge151@outlook.com">chrislegge151@outlook.com</a> and
+                        I'll get back to you.
+                    </p>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../data.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
