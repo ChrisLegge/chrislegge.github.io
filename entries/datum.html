@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datum — Chris Legge</title>
+    <meta name="description" content="Datum is an engineering project notebook for iPad built solo in SwiftUI and SwiftData — Apple Pencil sketching, schematic capture with a rule checker, STL viewing, parts and budget tracking and a built-in engineering calculator.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f8ff7'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='52' font-family='Helvetica,Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECL%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <a href="../index.html"        class="nav-link">Home</a>
+            <a href="../experience.html"   class="nav-link">Experience</a>
+            <a href="../projects.html"     class="nav-link active">Projects</a>
+            <a href="../competitions.html" class="nav-link">Competitions</a>
+            <a href="../interests.html"    class="nav-link">Interests</a>
+            <a href="../skills.html"       class="nav-link">Skills</a>
+            <a href="../CVs/cv_4_6_26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../gallery.html"      class="nav-link">Gallery</a>
+        </div>
+        <div class="nav-right">
+            <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="entry-page">
+
+            <a href="../projects.html" class="entry-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Back to Projects
+            </a>
+
+            <h1 class="page-title">Datum</h1>
+            <p class="entry-meta">July 2026 – Present</p>
+
+            <p style="font-weight: 600; margin: 0.75rem 0;"><strong>An iPad app built solo, from first sketch to App Store submission.</strong></p>
+            <div class="social-links">
+                <a href="../DatumPrivacyPolicy/" class="social-link">
+                    Privacy Policy
+                </a>
+            </div>
+
+
+            <!-- SECTION 1: Overview -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Overview</h3>
+                    <p>
+                        Datum is an engineering project notebook for iPad. It exists because my own projects
+                        were scattered across sketchbooks, spreadsheets, camera rolls and half-finished CAD
+                        files — and by the time I came back to a build six months later, the reasoning behind
+                        every decision had gone with them.
+                    </p>
+                    <p>
+                        The app keeps a whole project in one place: ideas, Apple Pencil sketches, circuit
+                        schematics, CAD models, parts and budget, cutting lists, test plans, photos and notes.
+                        I designed and built it solo in <strong>SwiftUI</strong> and <strong>SwiftData</strong>,
+                        targeting iPadOS 17 and up.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of the project home screen -->
+                    <img src="../images/fullPage/datum/overview.jpg" alt="Datum project overview" class="entry-photo">
+                    <figcaption class="entry-caption">Nine sections, one project</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 2: Sketching -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Sketching with PencilKit</h3>
+                    <p>
+                        The sketch canvas is built on <strong>PencilKit</strong> over a 12000 × 9000pt sheet,
+                        with thirteen brushes, square, isometric and dot grids, and a measuring tool that reads
+                        real millimetres once you calibrate the drawing scale against a known length.
+                    </p>
+                    <p>
+                        Because technical drawing needs straight lines, I added line-lock modes that replace a
+                        freehand stroke with a clean line — optionally snapped to 15° increments or to grid
+                        intersections — and shape tools that turn a roughed-out circle or hexagon into a precise
+                        one. The paper, grain and grid are drawn into a <strong>CATiledLayer</strong> inside the
+                        canvas so they pan and zoom in lockstep with the ink rather than sliding independently.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of the sketch canvas with a technical drawing -->
+                    <img src="../images/fullPage/datum/sketch.jpg" alt="Datum sketch canvas" class="entry-photo">
+                    <figcaption class="entry-caption">Drafting paper, grids and line-lock drawing aids</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 3: Circuits -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Schematic Capture & Rule Checking</h3>
+                    <p>
+                        The circuit section is a schematic editor I wrote from scratch — every component symbol
+                        is drawn with SwiftUI's <strong>Canvas</strong> rather than shipped as artwork, so they
+                        stay sharp at any zoom. Components are placed, dragged and wired pin-to-pin on an
+                        infinite grid.
+                    </p>
+                    <p>
+                        You can define your own parts in a reusable component library: give an ESP32 a name,
+                        notes and labelled pins on any of the four sides, mark which pins are mandatory, and it
+                        renders as a proper labelled box. A rule checker then flags floating pins, missing
+                        ground or supply, direct shorts and duplicate references — and any required pin left
+                        unconnected is raised as an error. The finished schematic exports as a netlist, or
+                        rolls straight into the project's parts list.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of the circuit canvas with a custom component -->
+                    <img src="../images/fullPage/datum/circuit.jpg" alt="Datum circuit editor" class="entry-photo">
+                    <figcaption class="entry-caption">Custom components with labelled, checkable pins</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 4: CAD -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">STL Viewing</h3>
+                    <p>
+                        Datum imports and renders STL models in <strong>SceneKit</strong>, using a binary and
+                        ASCII parser I wrote by hand. Models are auto-centred, scaled to fit and framed by the
+                        camera, with a wireframe toggle for checking geometry.
+                    </p>
+                    <p>
+                        Writing the parser taught me a lesson about memory alignment the hard way: a binary STL
+                        triangle record is 50 bytes, so every other triangle starts on a two-byte boundary and
+                        a naive aligned read traps instantly. Switching to unaligned loads and parsing off the
+                        main thread turned a guaranteed crash into a smooth import.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of an STL model loaded in the CAD viewer -->
+                    <img src="../images/fullPage/datum/cad.jpg" alt="Datum CAD viewer" class="entry-photo">
+                    <figcaption class="entry-caption">Hand-written STL parser rendered in SceneKit</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 5: Build tracking -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Build, Budget & Testing</h3>
+                    <p>
+                        The build section covers the unglamorous half of a project: a parts list with suppliers
+                        and prices, a budget broken down by category using <strong>Swift Charts</strong>, a
+                        cutting list for pieces to cut, mill, drill or print, and an ordered build checklist.
+                        A work timer logs hours against phases so a finished project can tell you what it
+                        really cost in both money and time.
+                    </p>
+                    <p>
+                        Testing is deliberately structured: define what a pass looks like before you run it,
+                        record what actually happened, and keep a lessons-learned log of what broke and why.
+                        That log is searchable across every project I've ever built, which is the part I use
+                        most — the mistakes turn out to be far more reusable than the successes.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of the budget chart or checklist -->
+                    <img src="../images/fullPage/datum/build.jpg" alt="Datum build and budget tracking" class="entry-photo">
+                    <figcaption class="entry-caption">Parts, budget, cutting list, time tracking and tests</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 6: Calculator -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Engineering Calculator</h3>
+                    <p>
+                        Rather than reaching for a phone mid-build, Datum has around forty engineering formulas
+                        built in — Ohm's law, voltage dividers, LED series resistors, RC and LC networks, gear
+                        ratios, cantilever deflection, stepper steps per millimetre, feed and speed rates and
+                        more. Tapping any field solves for that variable instead.
+                    </p>
+                    <p>
+                        On top of that I wrote a small recursive-descent expression parser, which powers a
+                        grapher with drag-to-trace, numeric differentiation and integration, root finding, and
+                        solvers for simultaneous equations and quadratics. Any result can be dropped straight
+                        into the project as a note so the working is recorded alongside the build.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a screenshot of the grapher or formula list -->
+                    <img src="../images/fullPage/datum/calc.jpg" alt="Datum engineering calculator" class="entry-photo">
+                    <figcaption class="entry-caption">Formulas, graphing, calculus and equation solvers</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 7: What I learned -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">What I Learned</h3>
+                    <p>
+                        Datum is the largest solo Swift codebase I've written — around 9,000 lines across
+                        SwiftUI, SwiftData, PencilKit, SceneKit, PDFKit and Swift Charts. Most of what I learned
+                        came from bugs that only appear on real hardware: unaligned memory reads crashing the
+                        STL parser, SwiftData mutations happening off the main actor, and PencilKit silently
+                        rewriting black ink to white because the app forces dark mode and it assumes a dark
+                        canvas.
+                    </p>
+                    <p>
+                        That last one took three attempts to fix properly, because each time I verified it I
+                        was measuring the wrong thing. It was a good reminder that a fix isn't finished until
+                        you've proven it on the path the user actually takes — not the one that was easiest to
+                        test.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <!-- REPLACE: add a photo of the app in use on an iPad -->
+                    <img src="../images/fullPage/datum/pencil.jpg" alt="Datum in use on an iPad" class="entry-photo">
+                    <figcaption class="entry-caption">Built for Apple Pencil, on the iPad it was designed around</figcaption>
+                </figure>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../data.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
