@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datum — Support</title>
+    <meta name="description" content="Support, troubleshooting and FAQs for the Datum engineering project notebook for iPad.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f8ff7'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='52' font-family='Helvetica,Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECL%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <a href="../index.html"        class="nav-link">Home</a>
+            <a href="../experience.html"   class="nav-link">Experience</a>
+            <a href="../projects.html"     class="nav-link">Projects</a>
+            <a href="../competitions.html" class="nav-link">Competitions</a>
+            <a href="../interests.html"    class="nav-link">Interests</a>
+            <a href="../skills.html"       class="nav-link">Skills</a>
+            <a href="../CVs/cv_4_6_26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../gallery.html"      class="nav-link">Gallery</a>
+        </div>
+        <div class="nav-right">
+            <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="entry-page">
+
+            <a href="../index.html" class="entry-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Back to Home
+            </a>
+
+            <h1 class="page-title">Datum — Support</h1>
+            <p class="entry-meta">Questions, troubleshooting, and how to get in touch</p>
+
+            <section class="entry-section">
+                <div class="entry-text" style="max-width: 720px;">
+
+                    <h3 class="entry-heading">Getting Started</h3>
+                    <p>
+                        Datum is an engineering project notebook for iPad. Tap <strong>+</strong> on the
+                        project list to create a project, then work through the nine sections down the
+                        left-hand sidebar — ideas, sketch, circuit, CAD, build, testing, calc, photos and
+                        notes. No account, no sign-up: everything is stored on your own iPad.
+                    </p>
+                    <p>
+                        A full walkthrough of every section and what each button does is built into the app.
+                        It appears the first time you open a project, and you can bring it back any time
+                        from the <strong>···</strong> menu at the top of the sidebar, or the
+                        <strong>?</strong> button on the project list.
+                    </p>
+
+                    <h3 class="entry-heading">Frequently Asked Questions</h3>
+
+                    <p><strong>Do I need an Apple Pencil?</strong><br>
+                    It is much better with one — you get pressure, tilt and palm rejection. But you don't
+                    need one. Tap the hand icon in the Sketch toolbar to turn on finger drawing. With it
+                    on, pan and zoom using two fingers instead of one.</p>
+
+                    <p><strong>How do I draw a straight line?</strong><br>
+                    Use the line-lock button in the Sketch toolbar. Set it to Straight and any stroke you
+                    draw becomes a clean line between where you started and finished. Angle 15° snaps to
+                    the nearest 15 degrees so horizontals and verticals are exact, and Grid snap puts both
+                    ends on the nearest grid intersection.</p>
+
+                    <p><strong>How do measurements work?</strong><br>
+                    Tap the ruler icon and drag across whatever you want to measure. To get real
+                    millimetres, first set the drawing scale: tap the scale button next to the ruler, or
+                    tap "Calibrate scale" in measure mode and draw along something whose length you
+                    already know.</p>
+
+                    <p><strong>Can I add my own circuit components?</strong><br>
+                    Yes. In the Circuit section, tap <strong>Component library</strong> at the bottom of
+                    the palette, then <strong>+</strong>. Give the part a name, notes, and pins on any of
+                    the four sides — use Add Pins to create several at once. Tick <strong>Required</strong>
+                    on any pin that must be connected, and the circuit checker will raise an error if you
+                    leave it floating. Saved parts are reusable across every project.</p>
+
+                    <p><strong>My STL file won't load.</strong><br>
+                    Datum reads both binary and ASCII <code>.stl</code> files. If a model fails, check the
+                    file opens in another viewer — partially downloaded or truncated files are the usual
+                    cause. Very large models take a few seconds to parse.</p>
+
+                    <p><strong>Where is my data stored? Does it sync?</strong><br>
+                    Everything is stored locally on your iPad. There is currently no cloud sync between
+                    devices, and the app makes no network requests at all. Your projects are included in
+                    your device's normal encrypted backups. See the
+                    <a href="../DatumPrivacyPolicy/">Privacy Policy</a> for full details.</p>
+
+                    <p><strong>How do I get my project out of the app?</strong><br>
+                    Open the <strong>···</strong> menu in the sidebar and choose <strong>Export PDF</strong>.
+                    You pick which sections to include and get a single document covering the whole
+                    project. You can also share a sketch as an image, share an annotated photo, or export a
+                    circuit netlist as a text file from the circuit check sheet.</p>
+
+                    <p><strong>Can I undo a change?</strong><br>
+                    The Sketch and photo markup canvases have undo and redo buttons. For the wider project,
+                    use <strong>Snapshots</strong> in the <strong>···</strong> menu — take one before a big
+                    change and you can roll the sketch, circuit, CAD model and notes back to that point.</p>
+
+                    <p><strong>The app opened on a screen saying it can't open its database.</strong><br>
+                    That means the stored data doesn't match the current version's data model, usually
+                    after an update. Tap <strong>Try again</strong> first. If it keeps happening, please
+                    email me before using <strong>Reset local data</strong> — that permanently deletes every
+                    project on the device, and I would rather help you recover it.</p>
+
+                    <h3 class="entry-heading">Still need help?</h3>
+                    <p>
+                        Email <a href="mailto:chrislegge151@outlook.com">chrislegge151@outlook.com</a> and
+                        I'll get back to you. It helps if you mention your iPad model, your iPadOS version,
+                        and which section of the app you were in.
+                    </p>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../data.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
