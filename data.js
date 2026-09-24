@@ -137,7 +137,7 @@ const portfolioData = {
             dates: "July 2026 - Present",
             category: "Software",
             tags: ["SwiftUI", "SwiftData", "PencilKit", "SceneKit", "iPadOS"],
-            summary: "An engineering project notebook for iPad, built solo in SwiftUI and SwiftData \u2014 Apple Pencil sketching, schematic capture with a rule checker, STL model viewing, parts and budget tracking, and a built-in engineering calculator. Everything about a build in one place, stored entirely on device.",
+            summary: "An engineering project notebook for iPad, built solo in SwiftUI and SwiftData \u2014 Apple Pencil sketching, schematic capture with a rule checker, STL model viewing, parts and budget tracking, and a built-in engineering calculator. Everything about a build in one place, stored entirely on device. Now on the App Store.",
             fullPage: true,
             pageUrl: "entries/datum.html"
         },
