@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe in Minecraft — Chris Legge</title>
-    <meta name="description" content="A fully functional tic-tac-toe game built in Minecraft using only redstone — boolean logic, multiplexers, encoders and decoders, with no mods or command blocks.">
+    <title>Digital Logic Games in Minecraft | Chris Legge</title>
+    <meta name="description" content="Tic Tac Toe, Connect 4 and Pong built entirely from logic gates in Minecraft: RAM, ROM, counters and decoders designed from scratch with no mods or code.">
+    <meta property="og:title" content="Digital Logic Games in Minecraft | Chris Legge">
+    <meta property="og:description" content="Tic Tac Toe, Connect 4 and Pong built entirely from logic gates in Minecraft: RAM, ROM, counters and decoders designed from scratch with no mods or code.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chrislegge.github.io/entries/tic-tac-toe.html">
+    <meta property="og:image" content="https://chrislegge.github.io/images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f8ff7'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='52' font-family='Helvetica,Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECL%3C/text%3E%3C/svg%3E">
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +29,7 @@
             <a href="../competitions.html" class="nav-link">Competitions</a>
             <a href="../interests.html"    class="nav-link">Interests</a>
             <a href="../skills.html"       class="nav-link">Skills</a>
-            <a href="../CVs/cv_4_6_26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../CVs/cv_21_9_26.pdf" class="nav-link" id="cv-link">CV</a>
             <a href="../gallery.html"      class="nav-link">Gallery</a>
         </div>
         <div class="nav-right">
@@ -49,8 +55,10 @@
                 Back to Projects
             </a>
 
-            <h1 class="page-title">Tic Tac Toe in Minecraft</h1>
-            <p class="entry-meta">January 2024 – April 2024</p>
+            <h1 class="page-title">Digital Logic Games in Minecraft</h1>
+            <p class="entry-meta">April 2024 to Present</p>
+
+            <p style="font-weight: 600; margin: 0.75rem 0;">Three games built entirely out of logic gates. No mods, no command blocks and no code, just hardware I designed myself.</p>
 
 
             <!-- SECTION 1: Overview -->
@@ -58,59 +66,150 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Overview</h3>
                     <p>
-                        I built a fully functional Tic Tac Toe game in Minecraft using only redstone components,
-                        with no mods or command blocks. The game was designed for two players who alternate turns,
-                        with each player's pieces represented by 'X' and 'O' shapes stored in a ROM.
+                        Redstone in Minecraft works like real digital logic. You have signals that are either on or off, wires,
+                        and components you can wire up into NOT, AND and OR gates, and every component adds a small delay just
+                        like a real gate does. Anything bigger than that you have to build yourself, from the gates up.
+                    </p>
+                    <p>
+                        I have used it to build Tic Tac Toe, Connect 4 and Pong. Each one is a complete embedded system made
+                        only of digital logic: inputs from the players, memory to hold the game state, logic that works out
+                        what happens next, and a display driver that draws it all on a screen made of blocks. There is no
+                        processor and no software anywhere in it. It is closer to designing a chip than writing a program,
+                        and because everything is built in 3D, fitting the wiring into the space is a real problem too.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/projects/project6.jpg" alt="Connect 4 built in Minecraft redstone" class="entry-photo">
+                    <figcaption class="entry-caption">Connect 4, built entirely from redstone</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 2: Architecture -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">The Architecture</h3>
+                    <p>
+                        All three games are built on the same set of building blocks, which I designed once and then reused
+                        and extended for each new game:
+                    </p>
+                    <ul>
+                        <li><strong>RAM</strong> to store which squares are taken and by which player</li>
+                        <li><strong>ROM</strong> holding the shapes of the X and O pieces, since there are no colours to work with</li>
+                        <li><strong>Decoders</strong> to turn a binary value into a position on the screen</li>
+                        <li><strong>Encoders and multiplexers</strong> to route player inputs and pick which part of the board is being read</li>
+                        <li><strong>Counters</strong> for anything that moves or needs to be tracked over time</li>
+                    </ul>
+                    <p>
+                        Designing it this way meant I could treat each part like a module with its own inputs and outputs, test
+                        it on its own, and then connect it into the rest of the system. It is the same way I now structure
+                        Verilog.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/fullPage/minecraft/logic.jpg" alt="Redstone logic circuits underneath one of the games" class="entry-photo">
+                    <figcaption class="entry-caption">The logic underneath the screen</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 3: Tic Tac Toe -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Tic Tac Toe</h3>
+                    <p>
+                        Two players take turns placing an X or an O. Each square has its own bit of memory, the pieces are drawn
+                        from the shapes in ROM, and the win logic checks every line of three for each player using AND and OR
+                        gates. When someone wins, the score display on the side of the board updates.
+                    </p>
+                    <p>
+                        Getting the turn logic right was harder than it sounds. The board has to know whose go it is, stop a
+                        player from placing a piece on a square that is already taken, and only swap turns once a move has
+                        actually gone through.
                     </p>
                 </div>
                 <figure class="entry-figure">
                     <img src="../images/projects/project2.jpg" alt="Tic Tac Toe board in Minecraft" class="entry-photo">
-                    <figcaption class="entry-caption">The finished Tic Tac Toe board</figcaption>
+                    <figcaption class="entry-caption">Tic Tac Toe with its score display</figcaption>
                 </figure>
             </section>
 
             <hr class="entry-divider">
 
-            <!-- SECTION 2: Logic & Design -->
+            <!-- SECTION 4: Connect 4 -->
             <section class="entry-section entry-section--reversed">
                 <div class="entry-text">
-                    <h3 class="entry-heading">Logic & Design</h3>
+                    <h3 class="entry-heading">Connect 4</h3>
                     <p>
-                        The game logic was implemented entirely using boolean logic and redstone circuits,
-                        including AND, OR, and NOT gates. I used several digital electronics techniques —
-                        multiplexers, encoders, and decoders — to manage the game state and determine the
-                        winner, with a score display on the side of the board.
+                        Connect 4 needed a much bigger memory, so I designed what I call a trickle down RAM. When a player drops
+                        a piece into a column, a signal is sent into the top of that column and falls down through the memory
+                        cells until it either reaches the bottom or hits a cell that is already filled, then it locks into the
+                        cell above. That way the memory itself does the job of gravity, and there is no separate logic needed
+                        to work out where the piece should land.
+                    </p>
+                    <p>
+                        The pieces are drawn from ROM in the right position on the screen as X and O shapes. This was the
+                        biggest thing I had built at the time and it is where most of my understanding of digital logic and
+                        boolean algebra comes from.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <img src="../images/projects/project2.jpg" alt="Redstone logic underneath the board" class="entry-photo">
-                    <figcaption class="entry-caption">The redstone circuitry powering the game</figcaption>
+                    <img src="../images/fullPage/minecraft/ram.jpg" alt="The trickle down RAM for Connect 4" class="entry-photo">
+                    <figcaption class="entry-caption">The trickle down RAM</figcaption>
                 </figure>
             </section>
 
             <hr class="entry-divider">
 
-            <!-- SECTION 3: Results & Reflections -->
+            <!-- SECTION 5: Pong -->
             <section class="entry-section">
                 <div class="entry-text">
-                    <h3 class="entry-heading">Results & Reflections</h3>
+                    <h3 class="entry-heading">Pong (In Progress)</h3>
                     <p>
-                        The project required careful planning to ensure it was both functional and visually
-                        appealing within Minecraft's constraints. It allowed me to apply my knowledge of
-                        digital logic design and boolean algebra in a hands-on and creative way, and
-                        deepened my understanding of how physical logic circuits work.
+                        Pong is the hardest so far because everything is moving in real time. Each paddle is a 6 bit counter
+                        that the player counts up or down, with logic that stops it at 0 and at 61 so it can't go off the
+                        screen. The counter's value is then decoded to draw the paddle in the right place.
+                    </p>
+                    <p>
+                        The ball will use two more counters for its x and y position. When it hits a wall or a paddle, the
+                        direction of the matching counter flips, which makes it bounce. I am working on the collision logic now.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <img src="../images/projects/project2.jpg" alt="Game in progress" class="entry-photo">
-                    <figcaption class="entry-caption">The game being played</figcaption>
+                    <img src="../images/projects/project7.jpg" alt="Pong being built in Minecraft" class="entry-photo">
+                    <figcaption class="entry-caption">Pong, still being built</figcaption>
                 </figure>
             </section>
 
-            <!-- Add more sections here, alternating with <hr class="entry-divider"> -->
+            <hr class="entry-divider">
+
+            <!-- SECTION 6: What it taught me -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">What It Taught Me</h3>
+                    <p>
+                        These builds are where I actually learned digital design, well before I started it at university.
+                        Building memory, counters and decoders out of individual gates means you understand exactly what they
+                        are doing, and you run into real hardware problems along the way: signals arriving at different times
+                        because one path has more delay than another, logic that has to be laid out to fit a fixed space, and
+                        bugs you can only find by watching the signals move through the circuit.
+                    </p>
+                    <p>
+                        When I came to write Verilog for the FPGA on my Engineers Without Borders project, the ideas were
+                        already familiar. I just had a much faster way of building them.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/fullPage/minecraft/overview.jpg" alt="An overview of the whole build" class="entry-photo">
+                    <figcaption class="entry-caption">The whole build from above</figcaption>
+                </figure>
+            </section>
 
         </div>
     </main>
+
 
     <script src="../data.js"></script>
     <script src="../script.js"></script>

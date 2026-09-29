@@ -1812,3 +1812,188 @@ video.detail-image {
         transform: none;
     }
 }
+
+/* Availability line in hero */
+.hero-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: -0.5rem 0 1.75rem;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.hero-availability::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+    flex-shrink: 0;
+}
+
+/* Early projects (collapsed section on projects page) */
+.early-projects {
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-secondary);
+}
+
+.early-projects-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.4rem 2rem;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+}
+
+.early-projects-summary::-webkit-details-marker {
+    display: none;
+}
+
+.early-projects-summary::after {
+    content: '+';
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    color: var(--accent);
+}
+
+.early-projects[open] .early-projects-summary::after {
+    content: '\2212';
+}
+
+.early-projects-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.early-projects-sub {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    padding-right: 2.5rem;
+}
+
+.early-projects-list {
+    padding: 0 1.25rem 1.25rem;
+    gap: 1.25rem;
+}
+
+.early-projects-list .detail-item {
+    padding: 1.5rem;
+}
+
+.early-projects-list .detail-image {
+    width: 180px;
+    height: 130px;
+}
+
+/* App Store button on app entry pages */
+.app-store-btn {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+    font-weight: 600;
+}
+
+.app-store-btn:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+[data-theme="dark"] .app-store-btn {
+    border-color: #3a3a3a;
+}
+
+/* Spec table on entry pages */
+.entry-specs {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 0;
+    font-size: 0.92rem;
+}
+
+.entry-specs th,
+.entry-specs td {
+    text-align: left;
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+
+.entry-specs th {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    width: 1%;
+}
+
+.entry-code {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    line-height: 1.55;
+    margin-top: 1rem;
+    white-space: pre;
+}
+
+@media (max-width: 768px) {
+    .early-projects-summary { padding: 1.2rem 1.25rem; }
+    .early-projects-summary::after { right: 1.25rem; }
+    .early-projects-list { padding: 0 0.75rem 0.75rem; }
+}
+
+.entry-text ul {
+    padding-left: 1.3rem;
+    margin: 0.25rem 0 1rem;
+}
+
+.entry-text li {
+    margin-bottom: 0.45rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
+
+.entry-text li strong {
+    color: var(--text-primary);
+}
+
+.entry-text p + p,
+.entry-text ul + p,
+.entry-text p + table,
+.entry-text ul + table {
+    margin-top: 0.9rem;
+}
+
+.entry-text {
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .entry-specs th { white-space: normal; width: 30%; }
+    .entry-specs th, .entry-specs td { padding: 0.5rem 0.4rem; }
+    .entry-code { font-size: 0.75rem; }
+}
+
+@media (max-width: 768px) {
+    .entry-text { width: 100%; }
+}

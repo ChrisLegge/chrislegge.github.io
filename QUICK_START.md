@@ -19,7 +19,7 @@ about: {
 
 Place your images in the correct folders:
 
-- `images/collage/` - Personal photos for the about section (4 images recommended)
+- `images/gallery/` - Personal photos for the about section (4 images recommended)
 - `images/logos/` - Company/organization logos for experience section
 - `images/projects/` - Project screenshots or photos
 - `images/competitions/` - Competition photos or certificates
@@ -29,10 +29,10 @@ Then update the paths in `data.js`:
 
 ```javascript
 collageImages: [
-    "images/collage/photo1.jpg",
-    "images/collage/photo2.jpg",
-    "images/collage/photo3.jpg",
-    "images/collage/photo4.jpg"
+    "images/gallery/photo1.jpg",
+    "images/gallery/photo2.jpg",
+    "images/gallery/photo3.jpg",
+    "images/gallery/photo4.jpg"
 ]
 ```
 

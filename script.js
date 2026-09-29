@@ -32,6 +32,7 @@ function populateAbout() {
     const nameEl       = document.getElementById('name');
     const subtitleEl   = document.getElementById('subtitle');
     const descriptionEl = document.getElementById('description');
+    const availabilityEl = document.getElementById('availability');
     const githubLink   = document.getElementById('githubLink');
     const linkedinLink = document.getElementById('linkedinLink');
     const itchLink     = document.getElementById('itchLink');
@@ -41,6 +42,10 @@ function populateAbout() {
     if (nameEl)        nameEl.textContent         = portfolioData.about.name;
     if (subtitleEl)    subtitleEl.textContent     = portfolioData.about.title;
     if (descriptionEl) descriptionEl.textContent  = portfolioData.about.description;
+    if (availabilityEl && portfolioData.about.availability) {
+        availabilityEl.textContent = portfolioData.about.availability;
+        availabilityEl.hidden = false;
+    }
     if (githubLink)    githubLink.href            = portfolioData.about.github;
     if (linkedinLink)  linkedinLink.href          = portfolioData.about.linkedin;
     if (itchLink)      itchLink.href              = portfolioData.about.itch;
@@ -89,12 +94,12 @@ function populateHeroStats() {
     const wrap = document.getElementById('heroStats');
     if (!wrap) return;
 
-    const languages = portfolioData.skills
-        .find(s => s.category === 'Programming')?.items.length || 0;
+    const languages = portfolioData.skills.reduce((n, s) => n + s.items.length, 0);
+    const projectCount = portfolioData.projects.length + (portfolioData.earlyProjects?.length || 0);
     const years = new Date().getFullYear() - (portfolioData.about.codingSince || 2021);
 
     const stats = [
-        { value: portfolioData.projects.length, suffix: '+', label: 'Projects built' },
+        { value: projectCount,                  suffix: '+', label: 'Projects built' },
         { value: languages,                     suffix: '',  label: 'Languages & Tools' },
         { value: years,                         suffix: '+', label: 'Years of making' }
     ];
@@ -474,12 +479,34 @@ function populateDetailPage() {
         portfolioData.projects.forEach(project => {
             projectsList.appendChild(createDetailItem(project, 'project'));
         });
+        populateEarlyProjects(projectsList);
     }
     if (competitionsList) {
         portfolioData.competitions.forEach(comp => {
             competitionsList.appendChild(createDetailItem(comp, 'competition'));
         });
     }
+}
+
+function populateEarlyProjects(projectsList) {
+    const early = portfolioData.earlyProjects;
+    if (!early?.length) return;
+
+    const section = document.createElement('details');
+    section.className = 'early-projects';
+    section.innerHTML = `
+        <summary class="early-projects-summary">
+            <span class="early-projects-title">Early projects</span>
+            <span class="early-projects-sub">${early.length} games and films I made while teaching myself to code, 2021 to 2024</span>
+        </summary>
+        <div class="detail-list early-projects-list"></div>
+    `;
+    const list = section.querySelector('.early-projects-list');
+    early.forEach(project => list.appendChild(createDetailItem(project, 'project')));
+    section.addEventListener('toggle', () => {
+        list.querySelectorAll('.detail-item').forEach(item => item.classList.add('animate'));
+    });
+    projectsList.after(section);
 }
 
 // ─── Project category filters (projects page) ─────────────────────────────────

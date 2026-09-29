@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datum — Chris Legge</title>
-    <meta name="description" content="Datum is an engineering project notebook for iPad built solo in SwiftUI and SwiftData — Apple Pencil sketching, schematic capture with a rule checker, STL viewing, parts and budget tracking and a built-in engineering calculator.">
+    <title>Datum | Chris Legge</title>
+    <meta name="description" content="Datum is an engineering project notebook for iPad built solo in SwiftUI and SwiftData, with Apple Pencil sketching, schematic capture with a rule checker, STL viewing, parts and budget tracking and a built-in engineering calculator.">
+    <meta property="og:title" content="Datum | Chris Legge">
+    <meta property="og:description" content="Datum is an engineering project notebook for iPad built solo in SwiftUI and SwiftData, with Apple Pencil sketching, schematic capture with a rule checker, STL viewing, parts and budget tracking and a built-in engineering calculator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chrislegge.github.io/entries/datum.html">
+    <meta property="og:image" content="https://chrislegge.github.io/images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f8ff7'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='52' font-family='Helvetica,Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECL%3C/text%3E%3C/svg%3E">
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +29,7 @@
             <a href="../competitions.html" class="nav-link">Competitions</a>
             <a href="../interests.html"    class="nav-link">Interests</a>
             <a href="../skills.html"       class="nav-link">Skills</a>
-            <a href="../CVs/cv_4_6_26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../CVs/cv_21_9_26.pdf" class="nav-link" id="cv-link">CV</a>
             <a href="../gallery.html"      class="nav-link">Gallery</a>
         </div>
         <div class="nav-right">
@@ -50,11 +56,12 @@
             </a>
 
             <h1 class="page-title">Datum</h1>
-            <p class="entry-meta">July 2026 – Present</p>
+            <p class="entry-meta">July 2026 to Present · Live on the App Store</p>
 
             <p style="font-weight: 600; margin: 0.75rem 0;"><strong>An iPad app built solo, from first sketch to the App Store.</strong></p>
             <div class="social-links">
-                <a href="https://apps.apple.com/app/id6798633865" class="social-link">
+                <a href="https://apps.apple.com/app/id6798633865" class="social-link app-store-btn" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
                     Download on the App Store
                 </a>
                 <a href="../DatumPrivacyPolicy/" class="social-link">
@@ -73,7 +80,7 @@
                     <p>
                         Datum is an engineering project notebook for iPad. It exists because my own projects
                         were scattered across sketchbooks, spreadsheets, camera rolls and half-finished CAD
-                        files — and by the time I came back to a build six months later, the reasoning behind
+                        files, and by the time I came back to a build six months later, the reasoning behind
                         every decision had gone with them.
                     </p>
                     <p>
@@ -103,8 +110,8 @@
                     </p>
                     <p>
                         Because technical drawing needs straight lines, I added line-lock modes that replace a
-                        freehand stroke with a clean line — optionally snapped to 15° increments or to grid
-                        intersections — and shape tools that turn a roughed-out circle or hexagon into a precise
+                        freehand stroke with a clean line, which can
+                        snap to 15° increments or to grid intersections. There are also shape tools that turn a roughed-out circle or hexagon into a precise
                         one. The paper, grain and grid are drawn into a <strong>CATiledLayer</strong> inside the
                         canvas so they pan and zoom in lockstep with the ink rather than sliding independently.
                     </p>
@@ -123,7 +130,7 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Schematic Capture & Rule Checking</h3>
                     <p>
-                        The circuit section is a schematic editor I wrote from scratch — every component symbol
+                        The circuit section is a schematic editor I wrote from scratch. Every component symbol
                         is drawn with SwiftUI's <strong>Canvas</strong> rather than shipped as artwork, so they
                         stay sharp at any zoom. Components are placed, dragged and wired pin-to-pin on an
                         infinite grid.
@@ -132,7 +139,7 @@
                         You can define your own parts in a reusable component library: give an ESP32 a name,
                         notes and labelled pins on any of the four sides, mark which pins are mandatory, and it
                         renders as a proper labelled box. A rule checker then flags floating pins, missing
-                        ground or supply, direct shorts and duplicate references — and any required pin left
+                        ground or supply, direct shorts and duplicate references, and any required pin left
                         unconnected is raised as an error. The finished schematic exports as a netlist, or
                         rolls straight into the project's parts list.
                     </p>
@@ -186,7 +193,7 @@
                         Testing is deliberately structured: define what a pass looks like before you run it,
                         record what actually happened, and keep a lessons-learned log of what broke and why.
                         That log is searchable across every project I've ever built, which is the part I use
-                        most — the mistakes turn out to be far more reusable than the successes.
+                        most. The mistakes turn out to be far more reusable than the successes.
                     </p>
                 </div>
                 <figure class="entry-figure">
@@ -204,7 +211,7 @@
                     <h3 class="entry-heading">Engineering Calculator</h3>
                     <p>
                         Rather than reaching for a phone mid-build, Datum has around forty engineering formulas
-                        built in — Ohm's law, voltage dividers, LED series resistors, RC and LC networks, gear
+                        built in: Ohm's law, voltage dividers, LED series resistors, RC and LC networks, gear
                         ratios, cantilever deflection, stepper steps per millimetre, feed and speed rates and
                         more. Tapping any field solves for that variable instead.
                     </p>
@@ -229,7 +236,7 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">What I Learned</h3>
                     <p>
-                        Datum is the largest solo Swift codebase I've written — around 9,000 lines across
+                        Datum is the largest solo Swift codebase I've written, at around 9,000 lines across
                         SwiftUI, SwiftData, PencilKit, SceneKit, PDFKit and Swift Charts. Most of what I learned
                         came from bugs that only appear on real hardware: unaligned memory reads crashing the
                         STL parser, SwiftData mutations happening off the main actor, and PencilKit silently
@@ -239,7 +246,7 @@
                     <p>
                         That last one took three attempts to fix properly, because each time I verified it I
                         was measuring the wrong thing. It was a good reminder that a fix isn't finished until
-                        you've proven it on the path the user actually takes — not the one that was easiest to
+                        you've proven it on the path the user actually takes, not the one that was easiest to
                         test.
                     </p>
                 </div>

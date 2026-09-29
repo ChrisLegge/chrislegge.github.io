@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predictive Bus Routing — Chris Legge</title>
-    <meta name="description" content="A team project for the Engineers Without Borders UK challenge: a machine-learning bus rerouting system with a physical LED map driven by Arduino and FPGA.">
+    <title>Predictive Bus Routing | Chris Legge</title>
+    <meta name="description" content="How I designed the hardware for our Engineers Without Borders Grand Finalist project: a 156 LED map driven by my own Verilog on a DE1-SoC FPGA.">
+    <meta property="og:title" content="Predictive Bus Routing | Chris Legge">
+    <meta property="og:description" content="How I designed the hardware for our Engineers Without Borders Grand Finalist project: a 156 LED map driven by my own Verilog on a DE1-SoC FPGA.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chrislegge.github.io/entries/bus-routing.html">
+    <meta property="og:image" content="https://chrislegge.github.io/images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f8ff7'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='52' font-family='Helvetica,Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECL%3C/text%3E%3C/svg%3E">
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +29,7 @@
             <a href="../competitions.html" class="nav-link">Competitions</a>
             <a href="../interests.html"    class="nav-link">Interests</a>
             <a href="../skills.html"       class="nav-link">Skills</a>
-            <a href="../CVs/cv_4_6_26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../CVs/cv_21_9_26.pdf" class="nav-link" id="cv-link">CV</a>
             <a href="../gallery.html"      class="nav-link">Gallery</a>
         </div>
         <div class="nav-right">
@@ -50,7 +56,9 @@
             </a>
 
             <h1 class="page-title">Predictive Bus Routing</h1>
-            <p class="entry-meta">November 2025 – March 2026</p>
+            <p class="entry-meta">Engineers Without Borders Design Challenge · March 2026</p>
+
+            <p style="font-weight: 600; margin: 0.75rem 0;">Grand Finalist, top 36 in an international competition. I was responsible for all of the hardware.</p>
 
 
             <!-- SECTION 1: Overview -->
@@ -58,64 +66,211 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Overview</h3>
                     <p>
-                        As a team we designed a system to increase the efficiency of buses using a
-                        machine learning algorithm. It uses accurate data modelled from across the UK to predict
-                        the footfall at each bus stop and dynamically reroute buses to pick up passengers, so that
-                        you spend less time waiting and less time travelling.
+                        Ladywood is a ward in Birmingham that sits in the most deprived 5% of areas in England, and a lot of
+                        the people who live there don't have a car. The buses run to a fixed timetable, so they can't react
+                        when demand changes with the time of day, the weather or an event in the city.
+                    </p>
+                    <p>
+                        Our team of four built a system that predicts how many people will be waiting at each of 15 bus stops
+                        and then reroutes the buses to match. Two of my teammates built an XGBoost model to predict demand and
+                        a routing algorithm to plan the routes, and another built a Unity simulation. My job was the hardware:
+                        a physical, to scale LED map of the Ladywood bus network that shows the routes and demand live, so you
+                        can see what the system is doing without a screen.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <img src="../images/fullPage/busRouting/render.jpg" alt="Render of the final product" class="entry-photo">
-                    <figcaption class="entry-caption">Render of the simulation in Blender</figcaption>
+                    <img src="../images/fullPage/busRouting/map.jpg" alt="The finished LED map of the Ladywood bus network" class="entry-photo">
+                    <figcaption class="entry-caption">The finished LED map</figcaption>
                 </figure>
             </section>
 
             <hr class="entry-divider">
 
-            <!-- SECTION 2: Logic & Design -->
+            <!-- SECTION 2: Building the map -->
             <section class="entry-section entry-section--reversed">
                 <div class="entry-text">
-                    <h3 class="entry-heading">Physical Board</h3>
+                    <h3 class="entry-heading">Building the Map</h3>
                     <p>
-                        My main part of the project was to make the physical map, so that people at bus stops could see
-                        when the next bus will arrive. I originally designed a custom PCB for this part of the project;
-                        however, this was out of budget for our small project, so instead I soldered the light map together
-                        from a long strip of LEDs. I then added the machine learning model to my Arduino so that you could see
-                        the buses moving on the map, and repeated this using Verilog and an FPGA board so that we could
-                        run the different settings and it could run faster.
+                        The map is 156 WS2812B addressable LEDs laid out on an acrylic and foam panel at roughly 1:8000 scale.
+                        Every bus stop is a light and every road between stops is a lit strip, 15 stops joined by 22 strip
+                        segments in total. I traced the road network from a map of the ward, cut the strips to length and
+                        soldered every joint between them by hand so the whole thing runs as one long chain.
+                    </p>
+                    <p>
+                        I originally designed a custom PCB for the map, but getting it made was well outside our budget and
+                        would have been a big risk to the schedule, so I went with LED strips instead. They do the same job
+                        and meant I could get the full map working much sooner.
+                    </p>
+                    <p>
+                        Before writing any real control logic I used an Arduino to bring the hardware up. I ran a colour sweep
+                        down every segment to check that no LEDs were dead and that every solder joint was passing the data
+                        signal cleanly, lit up individual stops to check the layout matched the real network, and worked out
+                        where to inject 5V power and measured the current draw. By January all 156 LEDs were individually
+                        addressable.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <img src="../images/fullPage/busRouting/map" alt="The physical LED map" class="entry-photo">
-                    <figcaption class="entry-caption">The physical LED map</figcaption>
+                    <img src="../images/fullPage/busRouting/soldering.jpg" alt="Hand soldered joints between LED strip segments" class="entry-photo">
+                    <figcaption class="entry-caption">Hand soldered joints between strip segments</figcaption>
                 </figure>
             </section>
 
             <hr class="entry-divider">
 
-            <!-- SECTION 3: Results & Reflections -->
+            <!-- SECTION 3: Why the Arduino wasn't enough -->
             <section class="entry-section">
                 <div class="entry-text">
-                    <h3 class="entry-heading">Results & Reflections</h3>
+                    <h3 class="entry-heading">Why the Arduino Wasn't Enough</h3>
                     <p>
-                        The project was built for the Engineers Without Borders UK Design Challenge. From hundreds of entries
-                        across the UK, our team was selected as one of just 36 Grand Finalists invited to present at the national
-                        grand finals in June 2026. The project required careful planning from every member of the group to get it
-                        done on time: we created a Gantt chart to stay on track and assigned tasks to everyone's strengths, which
-                        is why our project management was so successful. Overall we worked well together as a team, and the
-                        project management played to each of our strengths.
+                        WS2812B LEDs are very fussy about timing. Each bit is sent as a pulse: a 1 is 900 ns high then 360 ns low,
+                        a 0 is 360 ns high then 900 ns low, and there is only about 150 ns of tolerance either side. On an
+                        Arduino Uno running at 16 MHz this has to be bit banged in software with interrupts switched off for the
+                        whole transmission, and one glitch corrupts the whole strip.
+                    </p>
+                    <p>
+                        The bigger problem was memory. The Uno only has 2 KB of SRAM, which isn't enough to store the route
+                        tables for every scenario, so it could only ever display colours that a laptop sent to it over serial.
+                        I wanted the map to run on its own, so even though nobody on the team had used one before, I moved
+                        the design onto an FPGA.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <img src="../images/fullPage/busRouting/ewb" alt="ewb logo" class="entry-photo">
-                    <figcaption class="entry-caption">EWB logo</figcaption>
+                    <img src="../images/fullPage/busRouting/arduino.jpg" alt="The Arduino prototype driving the LED map" class="entry-photo">
+                    <figcaption class="entry-caption">The Arduino prototype used for hardware bring up</figcaption>
                 </figure>
             </section>
 
-            <!-- Add more sections here, alternating with <hr class="entry-divider"> -->
+            <hr class="entry-divider">
+
+            <!-- SECTION 4: The FPGA design -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">The FPGA Design</h3>
+                    <p>
+                        The board is a Terasic DE1-SoC with an Intel Cyclone V FPGA and a 50 MHz clock. I only knew the basics of
+                        Verilog going in and taught myself enough in about ten days to get a working WS2812B driver, then built
+                        the rest of the design on top of it in Quartus Prime.
+                    </p>
+                    <p>
+                        The LED driver is a state machine that counts clock cycles to generate each pulse. At 50 MHz one cycle is
+                        20 ns, so a 0 bit is 18 cycles high and 45 low, a 1 bit is 45 high and 18 low, and a reset is held low for
+                        3000 cycles. Because it is done in hardware there is no jitter at all, and the whole map of 156 LEDs
+                        refreshes around 210 times a second.
+                    </p>
+                    <p>
+                        On top of the driver I wrote:
+                    </p>
+                    <ul>
+                        <li>A ROM holding the model's output for 4 weather scenarios across 8 time slots of the day, which I
+                            generated straight from the model's route plan with a Python script</li>
+                        <li>53 road paths between stops, worked out with a breadth first search, so buses follow the real roads
+                            instead of jumping from stop to stop</li>
+                        <li>Three bus state machines that switch between dwelling at a stop for about 1.9 seconds and travelling
+                            one LED every 96 ms. Two buses follow the routes the model picks and the third tours all 15 stops</li>
+                        <li>Switch controls to pick the scenario and time slot, and a demo mode that steps through every time
+                            slot every 30 seconds</li>
+                        <li>A two flip flop synchroniser on the reset button so it can't cause metastability</li>
+                    </ul>
+                    <table class="entry-specs">
+                        <tr><th>Board</th><td>Terasic DE1-SoC, Intel Cyclone V 5CSEMA5F31C6</td></tr>
+                        <tr><th>Clock</th><td>50 MHz</td></tr>
+                        <tr><th>Output</th><td>156 WS2812B LEDs, 24 bit colour each</td></tr>
+                        <tr><th>Refresh</th><td>About 210 frames per second</td></tr>
+                        <tr><th>ROM</th><td>32 states (4 scenarios × 8 time slots) × 15 stops</td></tr>
+                        <tr><th>Tools</th><td>Verilog, SystemVerilog, Quartus Prime, Python</td></tr>
+                    </table>
+                    <pre class="entry-code">localparam NUM_LEDS   = 156;
+localparam T0H=18, T0L=45, T1H=45, T1L=18, TRESET=3000;
+localparam MOVE_SPD   = 20;   // frames per LED step (~96ms)
+localparam DWELL_TIME = 400;  // frames at stop (~1.9s)</pre>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/fullPage/busRouting/fpga.jpg" alt="The DE1-SoC FPGA board connected to the LED map" class="entry-photo">
+                    <figcaption class="entry-caption">The DE1-SoC driving the map</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 5: Grand finals system -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">The Grand Finals Setup</h3>
+                    <p>
+                        For the grand finals I split the demo across three devices so it could show live data and still be
+                        completely reliable on the day. The FPGA holds the demand ROM and the switches pick the scenario. It
+                        talks to a Raspberry Pi 5 over UART at 9600 baud using 17 byte frames, each one starting with a sync
+                        byte and ending with an XOR checksum so a corrupted frame gets thrown away. I wrote the UART receiver,
+                        transmitter and frame parser for the FPGA in SystemVerilog.
+                    </p>
+                    <p>
+                        The Pi simulates the three buses moving around their routes, sends their positions back to the FPGA
+                        to show on the seven segment displays, and broadcasts everything over WiFi to an Arduino Uno R4 that
+                        drives the LED strip and pulses the busiest stop. The Pi runs its own hotspot and serves a web
+                        dashboard, so the whole thing works with no internet and no laptop.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/fullPage/busRouting/finals.jpg" alt="The hardware demo set up at the grand finals" class="entry-photo">
+                    <figcaption class="entry-caption">The demo set up for the grand finals</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 6: What I learned -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">What I Would Do Differently</h3>
+                    <p>
+                        The design works on the board, but when I went back through the Quartus timing report it doesn't meet
+                        timing. The worst path misses its setup time by 11.24 ns. The colour for each LED was being worked out every
+                        single clock cycle through a long chain of ROM lookups and a big priority encoder, and that logic is
+                        too deep to settle inside one 20 ns clock period.
+                    </p>
+                    <p>
+                        Each LED takes about 1,500 clock cycles to send, so there is no reason to calculate its colour every
+                        cycle. The fix is to work the colour out once, register it, and then shift it out. It would also
+                        let me pipeline the lookups properly. It is the most useful thing I took from the project: getting a
+                        design to work on the bench and getting it to be correct are not the same.
+                    </p>
+                    <p>
+                        I would also like to go back to the custom PCB now I know more, as it would make the map far neater
+                        and easier to scale up to more stops.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/fullPage/busRouting/render.jpg" alt="Blender render of the Ladywood bus network" class="entry-photo">
+                    <figcaption class="entry-caption">A Blender render I made of the network for our presentation</figcaption>
+                </figure>
+            </section>
+
+            <hr class="entry-divider">
+
+            <!-- SECTION 7: Results -->
+            <section class="entry-section">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Results</h3>
+                    <p>
+                        Out of hundreds of entries, our team was selected as one of 36 Grand Finalists in the Engineers Without
+                        Borders Design Challenge. As well as the map, I made a 3D animated visualisation of the Ladywood network
+                        in Blender for our presentation, tracing the roads and canals and modelling a bus and a bus stop.
+                    </p>
+                    <p>
+                        We planned the whole project with a Gantt chart, split the work by what each of us was best at and
+                        held a short weekly check in just for anything that was blocked. That check in made a big difference,
+                        and it is something I will keep doing on group projects.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/fullPage/busRouting/ewb.jpg" alt="Engineers Without Borders logo" class="entry-photo">
+                    <figcaption class="entry-caption">Engineers Without Borders Design Challenge</figcaption>
+                </figure>
+            </section>
 
         </div>
     </main>
+
 
     <script src="../data.js"></script>
     <script src="../script.js"></script>

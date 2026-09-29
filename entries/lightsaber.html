@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Lightsaber — Chris Legge</title>
-    <meta name="description" content="How I designed and built a custom Arduino-powered lightsaber with addressable LEDs, custom animations and a hand-machined handle.">
+    <title>Custom Lightsaber | Chris Legge</title>
+    <meta name="description" content="A fully working combat lightsaber with a machined handle and a blade of 188 addressable LEDs, controlled by an Arduino running animations I wrote in C.">
+    <meta property="og:title" content="Custom Lightsaber | Chris Legge">
+    <meta property="og:description" content="A fully working combat lightsaber with a machined handle and a blade of 188 addressable LEDs, controlled by an Arduino running animations I wrote in C.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chrislegge.github.io/entries/lightsaber.html">
+    <meta property="og:image" content="https://chrislegge.github.io/images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f8ff7'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='52' font-family='Helvetica,Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECL%3C/text%3E%3C/svg%3E">
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +29,7 @@
             <a href="../competitions.html" class="nav-link">Competitions</a>
             <a href="../interests.html"    class="nav-link">Interests</a>
             <a href="../skills.html"       class="nav-link">Skills</a>
-            <a href="../CVs/cv_4_6_26.pdf" class="nav-link" id="cv-link">CV</a>
+            <a href="../CVs/cv_21_9_26.pdf" class="nav-link" id="cv-link">CV</a>
             <a href="../gallery.html"      class="nav-link">Gallery</a>
         </div>
         <div class="nav-right">
@@ -50,7 +56,7 @@
             </a>
 
             <h1 class="page-title">Custom Lightsaber</h1>
-            <p class="entry-meta">February 2025 – March 2025</p>
+            <p class="entry-meta">June 2025</p>
 
 
             <!-- SECTION 1: Overview -->
@@ -58,64 +64,108 @@
                 <div class="entry-text">
                     <h3 class="entry-heading">Overview</h3>
                     <p>
-                        I built a fully functional lightsaber using an Arduino microcontroller and WS2812B LEDs that can
-                        be individually addressed to create animations through my code. I added switches and buttons for controls
-                        and used professional workshop equipment to create the handle.
+                        I built a fully working combat lightsaber from scratch. The blade is lit by 188 individually addressable
+                        WS2812B LEDs controlled by an Arduino, running animations I wrote myself, and all of the electronics
+                        and the battery fit inside a handle I made on workshop tools.
                     </p>
+                    <table class="entry-specs">
+                        <tr><th>Controller</th><td>Arduino, programmed in C with the FastLED library</td></tr>
+                        <tr><th>LEDs</th><td>188 WS2812B, two strips of 94 back to back</td></tr>
+                        <tr><th>Controls</th><td>Power switch, on/off control and a colour button</td></tr>
+                        <tr><th>Handle</th><td>PVC tube, laser cut 3mm acrylic grips</td></tr>
+                        <tr><th>Tools</th><td>Lathe, belt sander, laser cutter, soldering iron</td></tr>
+                    </table>
                 </div>
                 <figure class="entry-figure">
-                    <img src="../images/fullPage/lightsaber/wholeSaber.jpg" alt="Lightsaber" class="entry-photo">
+                    <img src="../images/fullPage/lightsaber/wholeSaber.jpg" alt="The finished lightsaber" class="entry-photo">
                     <figcaption class="entry-caption">The finished lightsaber</figcaption>
                 </figure>
             </section>
 
             <hr class="entry-divider">
 
-            <!-- SECTION 2: Logic & Design -->
+            <!-- SECTION 2: The Handle -->
             <section class="entry-section entry-section--reversed">
                 <div class="entry-text">
                     <h3 class="entry-heading">The Handle</h3>
                     <p>
-                        The handle is mainly made from two tubes of PVC pipe, one fitting completely inside the other. After making a design, I
-                        cut the PVC with a hacksaw and used a belt sander to get the pieces smooth. For the parts with details or bevels I
-                        used the lathe to cut into the PVC evenly and get the details right. For the grip strips I used a laser cutter and a sheet
-                        of 3mm acrylic to get an accurate shape. I then used a polymer welding glue to put all the pieces together after spray painting
-                        them the right colour, with added details such as dirt for wear and tear. I also designed a small circle to cover the bottom so there
-                        would be no hole at the end of the PVC pipe.
+                        The handle is mainly made from two tubes of PVC pipe, one fitting completely inside the other. After
+                        making a design, I cut the PVC with a hacksaw and used a belt sander to get the pieces smooth. For the
+                        parts with details or bevels I used the lathe to cut into the PVC evenly and get the details right.
+                    </p>
+                    <p>
+                        For the grip strips I used a laser cutter and a sheet of 3mm acrylic to get an accurate shape. I then
+                        spray painted all the pieces, added some dirt and wear so it looks used, and put it together with a
+                        polymer welding glue. I also designed a small cap to cover the bottom so there would be no hole at the
+                        end of the pipe.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <img src="../images/fullPage/lightsaber/handle.jpg" alt="The handle" class="entry-photo">
+                    <img src="../images/fullPage/lightsaber/handle.jpg" alt="The handle being made" class="entry-photo">
                     <figcaption class="entry-caption">The handle</figcaption>
                 </figure>
             </section>
 
             <hr class="entry-divider">
 
-            <!-- SECTION 3: Results & Reflections -->
+            <!-- SECTION 3: The Blade -->
             <section class="entry-section">
                 <div class="entry-text">
                     <h3 class="entry-heading">The Blade</h3>
                     <p>
-                        The blade was made from a spare blade that I bought cheap from a lightsaber shop. I added two strips of WS2812B LEDs, soldered
-                        end to end so they were part of the same strip, and stuck them back to back with a wooden pole through the middle so the blade didn't collapse.
-                        I covered the LEDs in packing foam as a cheap diffuser and wired the three pins to a removable connector, with the
-                        other end soldered to an Arduino alongside a battery, a switch and a button. After some programming and a lot of testing I could fit all the
-                        electronics inside the lightsaber. A switch on the back cuts power to the battery, with a removable panel to change it; an on/off
-                        switch programmed into the Arduino triggers an animation that slides up or down the blade; and a button
-                        changes the colour. I am going to add other animations, which I have already programmed, for when the button is pressed and held.
+                        The blade started as a cheap spare from a lightsaber shop. Inside it I put two strips of 94 LEDs, soldered
+                        end to end so they act as one strip of 188, and stuck them back to back with a wooden pole through the
+                        middle so the blade doesn't collapse. I wrapped the LEDs in packing foam, which works as a cheap
+                        diffuser, so the blade glows evenly instead of showing each LED as a dot.
+                    </p>
+                    <p>
+                        The three wires from the strip (power, ground and data) go to a removable connector, so the blade can
+                        come out of the handle.
                     </p>
                 </div>
                 <figure class="entry-figure">
-                    <img src="../images/fullPage/lightsaber/electronics.jpg" alt="The electronics" class="entry-photo">
-                    <figcaption class="entry-caption">The electronics</figcaption>
+                    <img src="../images/fullPage/lightsaber/blade.jpg" alt="The LED strips inside the blade" class="entry-photo">
+                    <figcaption class="entry-caption">The LED strips inside the blade</figcaption>
                 </figure>
             </section>
 
-            <!-- Add more sections here, alternating with <hr class="entry-divider"> -->
+            <hr class="entry-divider">
+
+            <!-- SECTION 4: Electronics & Code -->
+            <section class="entry-section entry-section--reversed">
+                <div class="entry-text">
+                    <h3 class="entry-heading">Electronics &amp; Code</h3>
+                    <p>
+                        The connector is soldered to an Arduino along with a battery, a switch and a button, and after a lot of
+                        testing I managed to fit all of it inside the handle. A switch on the back cuts the battery off
+                        completely, and there is a removable panel so the battery can be changed.
+                    </p>
+                    <p>
+                        Because the strip is folded in half inside the blade, the first and last LEDs both sit at the base
+                        and the middle of the strip is at the tip. So every animation lights the LEDs at both ends of the strip
+                        together and works inwards towards the middle. That makes the blade look like it is extending out of
+                        the handle, and turning it off runs the same thing in reverse.
+                    </p>
+                    <p>
+                        The button changes the colour of the blade. I have also written a few more animations, like a white
+                        band that travels up the blade and a red bleed effect, which I am adding for when the button is
+                        pressed and held.
+                    </p>
+                    <p>
+                        I capped the brightness in code at 100 out of 255. At full white, 188 LEDs could pull over 11 A, which is
+                        far too much for a battery inside a handle, so keeping the brightness down matters as much for the power
+                        as it does for how it looks.
+                    </p>
+                </div>
+                <figure class="entry-figure">
+                    <img src="../images/fullPage/lightsaber/electronics.jpg" alt="The Arduino and wiring inside the handle" class="entry-photo">
+                    <figcaption class="entry-caption">The electronics before they went into the handle</figcaption>
+                </figure>
+            </section>
 
         </div>
     </main>
+
 
     <script src="../data.js"></script>
     <script src="../script.js"></script>
